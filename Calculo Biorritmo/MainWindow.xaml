@@ -7,6 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel  HorizontalAlignment="Left">
+            <Label Content="RFC:"/>
+            <TextBox Name="rfc_input" MaxLength="13"/>
+            <Button Content="Obtener Datos" Click="obtenerRFC_click"/>
+            <StackPanel Name="grdRFC" Visibility="Collapsed">
+                <Label Name="lbRfc" Content="Fecha de nacimiento: "/>
+                <TextBlock Name="tbkRfc"/>
+                <TextBlock Name="tbkLivingDays"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

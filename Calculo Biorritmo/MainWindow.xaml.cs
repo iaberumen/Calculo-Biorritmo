@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Calculo_Biorritmo.Utils.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace Calculo_Biorritmo
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void obtenerRFC_click(object sender, RoutedEventArgs e)
+        {
+            tbkRfc.Text = DataCalc.getBirthDate(rfc_input.Text).ToString("yyyy-MM-dd");
+            tbkLivingDays.Text = ""+DataCalc.daysLived(DataCalc.getBirthDate(rfc_input.Text));
+            grdRFC.Visibility = Visibility.Visible;
         }
     }
 }
