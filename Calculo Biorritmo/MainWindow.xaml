@@ -20,6 +20,7 @@
                 <Label Name="lbRfc" Content="Fecha de nacimiento: "/>
                 <TextBlock Name="tbkRfc"/>
                 <TextBlock Name="tbkLivingDays"/>
+                <TextBlock Name="tbkFirstDayMonth"/>
             </StackPanel>
         </StackPanel>
     </Grid>

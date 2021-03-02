@@ -31,5 +31,12 @@ namespace Calculo_Biorritmo.Utils.Data
             int days = (today - birthDate).Days;
             return days;
         }
+
+        public static DateTime getFirstDayMonth()
+        {
+            DateTime today = DateTime.Now;
+            var firstDayOfMonth = new DateTime(today.Year, today.Month, 1);
+            return firstDayOfMonth;
+        }
     }
 }

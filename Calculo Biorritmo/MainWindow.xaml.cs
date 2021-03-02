@@ -30,6 +30,7 @@ namespace Calculo_Biorritmo
         {
             tbkRfc.Text = DataCalc.getBirthDate(rfc_input.Text).ToString("yyyy-MM-dd");
             tbkLivingDays.Text = ""+DataCalc.daysLived(DataCalc.getBirthDate(rfc_input.Text));
+            tbkFirstDayMonth.Text = "" + DataCalc.getFirstDayMonth().ToString("yyyy-MM-dd");
             grdRFC.Visibility = Visibility.Visible;
         }
     }
