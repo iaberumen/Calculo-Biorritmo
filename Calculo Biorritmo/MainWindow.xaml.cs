@@ -1,4 +1,5 @@
-﻿using Calculo_Biorritmo.Utils.Data;
+﻿using Calculo_Biorritmo.ApplicationLayer.Constants;
+using Calculo_Biorritmo.Utils.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
