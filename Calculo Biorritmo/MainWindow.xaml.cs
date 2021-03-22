@@ -27,12 +27,6 @@ namespace Calculo_Biorritmo
             InitializeComponent();
         }
 
-        private void obtenerRFC_click(object sender, RoutedEventArgs e)
-        {
-            tbkRfc.Text = DataCalc.getBirthDate(rfc_input.Text).ToString("yyyy-MM-dd");
-            tbkLivingDays.Text = ""+DataCalc.daysLived(DataCalc.getBirthDate(rfc_input.Text));
-            tbkFirstDayMonth.Text = "" + DataCalc.getFirstDayMonth().ToString("yyyy-MM-dd");
-            grdRFC.Visibility = Visibility.Visible;
-        }
+       
     }
 }
