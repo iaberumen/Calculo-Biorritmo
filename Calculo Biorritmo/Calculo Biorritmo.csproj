@@ -64,6 +64,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ApplicationLayer\Constants\BiorytmDays.cs" />
+    <Compile Include="Front\Form1.cs" />
+    <Compile Include="Front\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Screens\newEmployee.xaml.cs">
       <DependentUpon>newEmployee.xaml</DependentUpon>
@@ -107,6 +111,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Front\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
