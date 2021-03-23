@@ -35,6 +35,8 @@ namespace Calculo_Biorritmo.Front
 
             pv.Model.Series.Add(new FunctionSeries(Math.Sin, 0, 10, 0.1,"sin(x)"));
 
+            'Irving Rene Gonzalez Eugenio
+
 
         }
     }
