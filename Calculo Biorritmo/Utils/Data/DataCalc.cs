@@ -15,7 +15,7 @@ namespace Calculo_Biorritmo.Utils.Data
             var datos = RFC.Substring(4, 6);
 
             var year = datos.Substring(0,2);
-            year = (Convert.ToInt32(year) > 30) ? "19"+year : "20"+year;
+            year = (Convert.ToInt32(year) > 30) ? $"19{year}" : $"20{year}";
             var month = datos.Substring(2,2);
             var day = datos.Substring(4,2);
 
