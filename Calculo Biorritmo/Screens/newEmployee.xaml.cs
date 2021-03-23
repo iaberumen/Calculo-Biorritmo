@@ -1,6 +1,4 @@
-﻿using Calculo_Biorritmo.ApplicationLayer.Constants;
-using Calculo_Biorritmo.Utils.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,18 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Calculo_Biorritmo
+namespace Calculo_Biorritmo.Screens
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Lógica de interacción para newEmployee.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class newEmployee : UserControl
     {
-        public MainWindow()
+        public newEmployee()
         {
             InitializeComponent();
         }
 
-       
+        private void boton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show($"tu nombre es {tbNombre.Text}");
+        }
     }
 }
