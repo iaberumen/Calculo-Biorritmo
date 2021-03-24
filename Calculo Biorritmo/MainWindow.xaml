@@ -136,10 +136,7 @@
             </StackPanel>
         </Grid>
         <Grid Name="gridView" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height=".10*"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+            
         </Grid>
     </Grid>
 </Window>
