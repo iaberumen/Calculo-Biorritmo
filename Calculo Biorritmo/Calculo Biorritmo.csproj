@@ -43,8 +43,16 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.0.0.2422, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.4.0.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="OxyPlot, Version=2.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Core.2.0.0\lib\net45\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Wpf, Version=2.0.0.0, Culture=neutral, PublicKeyToken=75e952ba404cdbb0, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Wpf.2.0.0\lib\net45\OxyPlot.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -68,12 +76,16 @@
     <Compile Include="Front\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\ISystemView.cs" />
     <Compile Include="Models\Employee.cs" />
-    <Compile Include="Screens\newEmployee.xaml.cs">
-      <DependentUpon>newEmployee.xaml</DependentUpon>
+    <Compile Include="Screens\Calculate\CalculateView.xaml.cs">
+      <DependentUpon>CalculateView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Screens\Resultsxaml.xaml.cs">
-      <DependentUpon>Resultsxaml.xaml</DependentUpon>
+    <Compile Include="Screens\Employees\addEmployee.xaml.cs">
+      <DependentUpon>addEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Employees\EmployeesView.xaml.cs">
+      <DependentUpon>EmployeesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\Data\DataCalc.cs" />
     <Page Include="MainWindow.xaml">
@@ -88,11 +100,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Screens\newEmployee.xaml">
+    <Page Include="Screens\Calculate\CalculateView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Screens\Resultsxaml.xaml">
+    <Page Include="Screens\Employees\addEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Employees\EmployeesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

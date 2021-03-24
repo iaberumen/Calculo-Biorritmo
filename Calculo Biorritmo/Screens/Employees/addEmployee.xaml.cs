@@ -10,24 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Calculo_Biorritmo.Screens
+namespace Calculo_Biorritmo.Screens.Employees
 {
     /// <summary>
-    /// Lógica de interacción para newEmployee.xaml
+    /// Lógica de interacción para addEmployee.xaml
     /// </summary>
-    public partial class newEmployee : UserControl
+    public partial class addEmployee : Window
     {
-        public newEmployee()
+        public addEmployee()
         {
             InitializeComponent();
         }
 
-        private void boton_Click(object sender, RoutedEventArgs e)
+        private void btnRegresar_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show($"tu nombre es {tbNombre.Text}");
+            Close();
         }
     }
 }

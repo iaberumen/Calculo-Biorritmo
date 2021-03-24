@@ -22,7 +22,7 @@
             </Grid>
             
             <StackPanel Grid.Row="1" Orientation="Vertical" Background="DarkBlue">
-                <Button Name="Main" BorderBrush="Transparent" Margin="0,5,0,0" Width="Auto" Height="50" Padding="0" Cursor="Hand">
+                <Button Name="Main" BorderBrush="Transparent" Margin="0,5,0,0" Width="Auto" Height="50" Padding="0" Cursor="Hand" Click="Main_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -50,7 +50,7 @@
                     </Button.Template>
                 </Button>
 
-                <Button Name="Biorritm" BorderBrush="Transparent" Margin="0,5,0,0" Width="Auto" Height="50" Padding="0" Cursor="Hand">
+                <Button Name="Biorritm" BorderBrush="Transparent" Margin="0,5,0,0" Width="Auto" Height="50" Padding="0" Cursor="Hand" Click="Biorritm_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -78,7 +78,7 @@
                     </Button.Template>
                 </Button>
 
-                <Button Name="Employees" BorderBrush="Transparent" Margin="0,5,0,0" Width="Auto" Height="50" Padding="0" Cursor="Hand">
+                <Button Name="Employees" BorderBrush="Transparent" Margin="0,5,0,0" Width="Auto" Height="50" Padding="0" Cursor="Hand" Click="Employees_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -106,7 +106,7 @@
                     </Button.Template>
                 </Button>
 
-                <Button Name="Close" BorderBrush="Transparent" Margin="0,5,0,0" Width="Auto" Height="50" Padding="0" Cursor="Hand">
+                <Button Name="Close" BorderBrush="Transparent" Margin="0,5,0,0" Width="Auto" Height="50" Padding="0" Cursor="Hand" Click="Close_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -135,7 +135,7 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <Grid Grid.Column="1">
+        <Grid Name="gridView" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height=".10*"/>
                 <RowDefinition/>

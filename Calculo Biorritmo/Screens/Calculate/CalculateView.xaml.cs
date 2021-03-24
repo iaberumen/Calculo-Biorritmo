@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Calculo_Biorritmo.Screens
+namespace Calculo_Biorritmo.Screens.Calculate
 {
     /// <summary>
-    /// Lógica de interacción para Resultsxaml.xaml
+    /// Lógica de interacción para CalculateView.xaml
     /// </summary>
-    public partial class Resultsxaml : Page
+    public partial class CalculateView : UserControl
     {
-        public Resultsxaml()
+        public CalculateView()
         {
             InitializeComponent();
         }
