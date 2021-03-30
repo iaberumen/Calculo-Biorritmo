@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Calculo_Biorritmo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="960">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".25*"/>
@@ -18,7 +18,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid>
-                <Label Content="EL ICONO VA AQUI"/>
+                
             </Grid>
             
             <StackPanel Grid.Row="1" Orientation="Vertical" Background="DarkBlue">

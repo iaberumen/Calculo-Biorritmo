@@ -24,5 +24,26 @@ namespace Calculo_Biorritmo.Screens.Calculate
         {
             InitializeComponent();
         }
+
+        private void tbId_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                btnSearch_Click(null, null);
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("ASI");
+        }
+
+        private void btnClean_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCalculate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

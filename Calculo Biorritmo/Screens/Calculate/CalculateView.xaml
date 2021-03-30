@@ -7,6 +7,107 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
-        <Label Content="Este es el grid de calcular"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition/>
+            <RowDefinition Height="AUTO"/>
+        </Grid.RowDefinitions>
+        <Grid Background="DarkBlue">
+            <Label 
+                HorizontalAlignment="Center"
+                Content="CALCULAR"
+                FontSize="22"
+                FontWeight="Bold"
+                Foreground="White"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBlock
+            Text="Para calcular el biorritmo, Complete el siguiente formulario"
+                Margin="20"
+                FontWeight="Bold"
+                FontSize="16"/>
+        </Grid>
+        <Grid Grid.Row="2" Margin="20 0">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            Content="No. Reloj"
+                            FontWeight="Bold"/>
+                        <TextBox
+                            Name="tbId"
+                            Grid.Row="1"
+                            Width="200"
+                            HorizontalAlignment="Left"
+                            KeyDown="tbId_KeyDown"/>
+                    </Grid>
+                    <Button
+                        Name="btnSearch"
+                        Grid.Column="1"
+                        Margin="15 5"
+                        Content="Buscar"
+                        Width="100"
+                        HorizontalAlignment="Left"
+                        Click="btnSearch_Click"/>
+                </Grid>
+                
+                <Label
+                    Content="Nombre"
+                    FontWeight="Bold"/>
+                <TextBox
+                    Width="200"
+                    IsEnabled="False"
+                    HorizontalAlignment="Left"/>
+                <Label
+                    Content="Fecha de nacimiento"
+                    FontWeight="Bold"/>
+                <TextBox
+                    Width="200"
+                    IsEnabled="False"
+                    HorizontalAlignment="Left"/>
+                <Label
+                    Content="Activo"
+                    FontWeight="Bold"/>
+                <TextBox
+                    Width="100"
+                    IsEnabled="False"
+                    HorizontalAlignment="Left"/>
+                <Label
+                    Content="Mes"
+                    FontWeight="Bold"/>
+                <ComboBox
+                    Width="120"
+                    HorizontalAlignment="Left"/>
+            </StackPanel>
+            
+            
+        </Grid>
+        <Grid Grid.Row="3">
+            <StackPanel Margin="30 20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
+                <Button Name="btnClean" 
+                    Content="Limpiar campos" 
+                    HorizontalAlignment="Left" 
+                    Height="50" 
+                    Width="120"
+                    Margin="20 0"
+                    Click="btnClean_Click"/>
+                <Button Name="btnCalculate" 
+                    Content="Calcular" 
+                    HorizontalAlignment="Left" 
+                    Height="50" 
+                    Width="120"
+                    Click="btnCalculate_Click"/>
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </UserControl>

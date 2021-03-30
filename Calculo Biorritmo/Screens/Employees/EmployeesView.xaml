@@ -7,10 +7,62 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
-        <StackPanel>
-            <Label Content="Este es el view de empleados"/>
-            <Button Name="btnAddEmployee" Content="Agregar Empleado" HorizontalAlignment="Left" Height="50" Padding="5" Click="btnAddEmployee_Click"/>
-        </StackPanel>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition/>
+            <RowDefinition Height="AUTO"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="DarkBlue">
+            <Label 
+                HorizontalAlignment="Center"
+                Content="EMPLEADOS"
+                FontSize="22"
+                FontWeight="Bold"
+                Foreground="White"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Margin="10 10 10 0">
+                <StackPanel>
+                    <Label
+                        Content="Buscar"/>
+                    <TextBox
+                        Width="150"/>
+                </StackPanel>
+                <Button
+                    Content="Buscar"
+                    Margin="15 0"
+                    Padding="30 0"
+                    Height="30"/>
+                <StackPanel>
+                    <Label
+                        Content="Inactivos"/>
+                    <CheckBox
+                        HorizontalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2" Margin="30">
+            <DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Width="AUTO"/>
+                    <DataGridTextColumn Header="Nombre" Width="*"/>
+                    <DataGridTextColumn Header="Activo" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Row="3">
+            <StackPanel Margin="30 20" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <Button Name="btnAddEmployee" 
+                    Content="Agregar Empleado" 
+                    HorizontalAlignment="Left" 
+                    Height="50" 
+                    Padding="10 0" 
+                    Click="btnAddEmployee_Click"/>
+            </StackPanel>
+            
+        </Grid>
+
     </Grid>
 </UserControl>
