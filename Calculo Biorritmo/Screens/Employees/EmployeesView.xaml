@@ -45,7 +45,7 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" Margin="30">
-            <DataGrid Name ="empleado">
+            <DataGrid Name ="empleado" SelectionChanged="empleado_SelectionChanged">
                 <DataGrid.Columns>
                     <!--<DataGridTextColumn Header="Nombre" Width="AUTO"/>
                     <DataGridTextColumn Header="RFC" Width="*"/>

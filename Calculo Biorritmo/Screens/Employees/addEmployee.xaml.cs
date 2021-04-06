@@ -10,7 +10,14 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
+using System.Data.SqlClient;
+using Calculo_Biorritmo.Connection;
+using System.Configuration;
+using System.Windows;
+
 
 namespace Calculo_Biorritmo.Screens.Employees
 {
@@ -36,7 +43,22 @@ namespace Calculo_Biorritmo.Screens.Employees
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["conString"].ToString();
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "insert into empleado (Nombre, RFC, Reloj) values (@nm,@rfc,@reloj);";
+            cmd.Parameters.AddWithValue("@nm", tbId.Text);
+            cmd.Parameters.AddWithValue("@rfc", tbNoReloj.Text);
+            cmd.Parameters.AddWithValue("@reloj", tbRfc.Text);
+            cmd.Connection = con;
+            int a = cmd.ExecuteNonQuery();
 
+            if (a==1)
+            {
+                MessageBox.Show("Se agrego correctamente");
+                
+            }
         }
 
         private void tbId_KeyDown(object sender, KeyEventArgs e)

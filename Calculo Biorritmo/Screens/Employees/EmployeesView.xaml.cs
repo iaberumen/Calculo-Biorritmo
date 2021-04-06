@@ -49,5 +49,10 @@ namespace Calculo_Biorritmo.Screens.Employees
             DbClass.closeConnection();
 
         }
+
+        private void empleado_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
