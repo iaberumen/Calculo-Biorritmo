@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
+using System.Data.SqlClient;
+using Calculo_Biorritmo.Connection;
 
 namespace Calculo_Biorritmo.Screens.Employees
 {
@@ -29,6 +32,22 @@ namespace Calculo_Biorritmo.Screens.Employees
         {
             var addNewEmployee = new addEmployee();
             addNewEmployee.ShowDialog();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            DbClass.openConnectio();
+            DbClass.sql = "SELECT * FROM empleado;";
+            DbClass.cmd.CommandType = CommandType.Text;
+            DbClass.cmd.CommandText = DbClass.sql;
+
+            DbClass.da = new SqlDataAdapter(DbClass.cmd);
+            DbClass.dt = new DataTable();
+            DbClass.da.Fill(DbClass.dt);
+
+            empleado.ItemsSource = DbClass.dt.DefaultView;
+            DbClass.closeConnection();
+
         }
     }
 }

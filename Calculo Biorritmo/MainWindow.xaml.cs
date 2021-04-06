@@ -18,6 +18,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Calculo_Biorritmo.Screens.Employees;
 using Calculo_Biorritmo.Screens.Calculate;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Calculo_Biorritmo
 {

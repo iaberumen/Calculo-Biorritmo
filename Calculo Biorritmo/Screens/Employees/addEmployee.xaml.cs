@@ -28,5 +28,30 @@ namespace Calculo_Biorritmo.Screens.Employees
         {
             Close();
         }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tbId_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void tbNoReloj_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void tbRfc_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }

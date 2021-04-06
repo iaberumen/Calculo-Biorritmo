@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Calculo_Biorritmo.Screens.Employees"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Loaded="UserControl_Loaded">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="AUTO"/>
@@ -44,11 +45,11 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" Margin="30">
-            <DataGrid>
+            <DataGrid Name ="empleado">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Width="AUTO"/>
-                    <DataGridTextColumn Header="Nombre" Width="*"/>
-                    <DataGridTextColumn Header="Activo" Width="*"/>
+                    <!--<DataGridTextColumn Header="Nombre" Width="AUTO"/>
+                    <DataGridTextColumn Header="RFC" Width="*"/>
+                    <DataGridTextColumn Header="Reloj" Width="*"/>-->
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
