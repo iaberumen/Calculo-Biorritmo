@@ -4,6 +4,48 @@
              xmlns:local="clr-namespace:Calculo_Biorritmo"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="PrimaryHuePrincipal" Color="#444854" ></SolidColorBrush>
+            <SolidColorBrush x:Key="PrimaryHueWhite" Color="#F4F3F8"></SolidColorBrush>
+            <SolidColorBrush x:Key="PrimaryHueRealWhite" Color="#FFFFFF"></SolidColorBrush>
+            <SolidColorBrush x:Key="PrimaryHueDark" Color="#2C2D54"></SolidColorBrush>
+            <SolidColorBrush x:Key="PrimaryHueDarkMidDark" Color="#020587"></SolidColorBrush>
+            <SolidColorBrush x:Key="PrimaryHueDarkMidLight" Color="#B4B6FE" ></SolidColorBrush>
+            <SolidColorBrush x:Key="RowColorGrayLight" Color="#EEEEEE" ></SolidColorBrush>
+            <SolidColorBrush x:Key="PrimaryGray" Color="WhiteSmoke"></SolidColorBrush>
+            <SolidColorBrush x:Key="PrimaryGreen" Color="#0BE400" ></SolidColorBrush>
+            <SolidColorBrush x:Key="PrimaryDarkGreen" Color="#21CF91" ></SolidColorBrush>
+            <SolidColorBrush x:Key="PrimaryBlueGreen" Color="#54DEAD" ></SolidColorBrush>
+            <SolidColorBrush x:Key="DataCellBlue" Color="LightSkyBlue" ></SolidColorBrush>
+            <SolidColorBrush x:Key="DataCellRed" Color="#FF6060" ></SolidColorBrush>
+            <SolidColorBrush x:Key="PrimaryText" Color="#444854" ></SolidColorBrush>
+            <SolidColorBrush x:Key="PrimaryTextLigth" Color="#5E5E5E" ></SolidColorBrush>
+            <SolidColorBrush x:Key="PrimaryShadowLigth" Color="LightGray" ></SolidColorBrush>
+
+            <SolidColorBrush x:Key="SecondaryHueLightBrush" Color="#65E891"></SolidColorBrush>
+            <SolidColorBrush x:Key="SecondaryHueLightForegroundBrush" Color="#65E891" ></SolidColorBrush>
+            <SolidColorBrush x:Key="SecondaryHueMidBrush" Color="#21DB60"></SolidColorBrush>
+            <SolidColorBrush x:Key="SecondaryHueMidForegroundBrush" Color="#DCFCE7" ></SolidColorBrush>
+            <SolidColorBrush x:Key="SecondaryHueBannerBrush" Color="#71D1E3" ></SolidColorBrush>
+            <SolidColorBrush x:Key="SecondaryHueDarkBrush" Color="#005A1E"></SolidColorBrush>
+            <SolidColorBrush x:Key="SecondaryHueDarkForegroundBrush" Color="#00B23C" Opacity="0.83" ></SolidColorBrush>
+            
+
+            <SolidColorBrush x:Key="Deactivated" Color="Gray" Opacity="0.83"></SolidColorBrush>
+
+            <Style TargetType="Button" x:Key="RoundedButtonBlue">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="10" Background="{StaticResource SecondaryHueBannerBrush}" BorderThickness="0" BorderBrush="{TemplateBinding BorderBrush}" Padding="0 3">
+                                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                                  Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"                                                  
+                                                  Margin="{TemplateBinding Padding}" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

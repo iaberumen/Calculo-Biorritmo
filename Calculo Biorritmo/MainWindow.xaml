@@ -108,6 +108,34 @@
                     </Button.Template>
                 </Button>
 
+                <Button Name="Accident" BorderBrush="Transparent" Margin="0,5,0,0" Width="Auto" Height="50" Padding="0" Cursor="Hand" Click="Accident_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Border 
+                                        Name="BackBorder"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border Name="FrontBorder" Margin="10,-1,-1,-1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="3*" />
+                                            </Grid.ColumnDefinitions>
+                                            <materialDesign:PackIcon HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="12" Grid.Column="0" Padding="0" Kind="HeadAlert">
+                                                <materialDesign:PackIcon.LayoutTransform>
+                                                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="2" ScaleY="1.8"/>
+                                                </materialDesign:PackIcon.LayoutTransform>
+                                            </materialDesign:PackIcon>
+                                            <Label Grid.Column="1" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center">Accidentes</Label>
+                                        </Grid>
+                                    </Border>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                
                 <Button Name="Close" BorderBrush="Transparent" Margin="0,5,0,0" Width="Auto" Height="50" Padding="0" Cursor="Hand" Click="Close_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">

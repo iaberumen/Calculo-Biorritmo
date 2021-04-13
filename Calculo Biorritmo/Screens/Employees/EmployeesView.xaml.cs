@@ -36,17 +36,24 @@ namespace Calculo_Biorritmo.Screens.Employees
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            DbClass.openConnectio();
-            DbClass.sql = "SELECT * FROM empleado;";
-            DbClass.cmd.CommandType = CommandType.Text;
-            DbClass.cmd.CommandText = DbClass.sql;
+            try
+            {
+                DbClass.openConnectio();
+                DbClass.sql = "SELECT * FROM empleado;";
+                DbClass.cmd.CommandType = CommandType.Text;
+                DbClass.cmd.CommandText = DbClass.sql;
 
-            DbClass.da = new SqlDataAdapter(DbClass.cmd);
-            DbClass.dt = new DataTable();
-            DbClass.da.Fill(DbClass.dt);
+                DbClass.da = new SqlDataAdapter(DbClass.cmd);
+                DbClass.dt = new DataTable();
+                DbClass.da.Fill(DbClass.dt);
 
-            empleado.ItemsSource = DbClass.dt.DefaultView;
-            DbClass.closeConnection();
+                empleado.ItemsSource = DbClass.dt.DefaultView;
+                DbClass.closeConnection();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrio un error al obtener los datos");
+            }
 
         }
 

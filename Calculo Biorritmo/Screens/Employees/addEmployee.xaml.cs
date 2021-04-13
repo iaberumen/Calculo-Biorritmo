@@ -43,21 +43,28 @@ namespace Calculo_Biorritmo.Screens.Employees
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = ConfigurationManager.ConnectionStrings["conString"].ToString();
-            con.Open();
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "insert into empleado (Nombre, RFC, Reloj) values (@nm,@rfc,@reloj);";
-            cmd.Parameters.AddWithValue("@nm", tbId.Text);
-            cmd.Parameters.AddWithValue("@rfc", tbNoReloj.Text);
-            cmd.Parameters.AddWithValue("@reloj", tbRfc.Text);
-            cmd.Connection = con;
-            int a = cmd.ExecuteNonQuery();
-
-            if (a==1)
+            try
             {
-                MessageBox.Show("Se agrego correctamente");
-                
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["conString"].ToString();
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "insert into empleado (Nombre, RFC, Reloj) values (@nm,@rfc,@reloj);";
+                cmd.Parameters.AddWithValue("@nm", tbId.Text);
+                cmd.Parameters.AddWithValue("@rfc", tbNoReloj.Text);
+                cmd.Parameters.AddWithValue("@reloj", tbRfc.Text);
+                cmd.Connection = con;
+                int a = cmd.ExecuteNonQuery();
+
+                if (a == 1)
+                {
+                    MessageBox.Show("Se agrego correctamente");
+
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ocurrio un error al obtener los datos");
             }
         }
 

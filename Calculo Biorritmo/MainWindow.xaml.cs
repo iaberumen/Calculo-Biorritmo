@@ -20,6 +20,8 @@ using Calculo_Biorritmo.Screens.Employees;
 using Calculo_Biorritmo.Screens.Calculate;
 using System.Data.SqlClient;
 using System.Configuration;
+using Calculo_Biorritmo.Screens.Home;
+using Calculo_Biorritmo.Screens.Accidents;
 
 namespace Calculo_Biorritmo
 {
@@ -38,9 +40,7 @@ namespace Calculo_Biorritmo
             var control = view;
 
             gridView.Children.Clear();
-            gridView.Children.Add((UserControl) view);
-
-
+            gridView.Children.Add(new HomeView());
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -50,19 +50,44 @@ namespace Calculo_Biorritmo
 
         private void Employees_Click(object sender, RoutedEventArgs e)
         {
+            resetColors();
+            Employees.BorderBrush = Brushes.LightBlue;
             gridView.Children.Clear();
             gridView.Children.Add(new EmployeesView());
         }
 
         private void Biorritm_Click(object sender, RoutedEventArgs e)
         {
+            resetColors();
+            Biorritm.BorderBrush = Brushes.LightBlue;
             gridView.Children.Clear();
             gridView.Children.Add(new CalculateView());
         }
 
         private void Main_Click(object sender, RoutedEventArgs e)
         {
+            resetColors();
+            Main.BorderBrush = Brushes.LightBlue;
             gridView.Children.Clear();
+            gridView.Children.Add(new HomeView());
+        }
+
+        
+
+        private void Accident_Click(object sender, RoutedEventArgs e)
+        {
+            resetColors();
+            Accident.BorderBrush = Brushes.LightBlue;
+            gridView.Children.Clear();
+            gridView.Children.Add(new AccidentView());
+        }
+
+        private void resetColors()
+        {
+            Main.BorderBrush = Brushes.Transparent;
+            Employees.BorderBrush = Brushes.Transparent;
+            Biorritm.BorderBrush = Brushes.Transparent;
+            Accident.BorderBrush = Brushes.Transparent;
         }
     }
 }
