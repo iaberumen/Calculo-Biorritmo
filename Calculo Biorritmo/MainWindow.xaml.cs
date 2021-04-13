@@ -33,14 +33,20 @@ namespace Calculo_Biorritmo
         public MainWindow()
         {
             InitializeComponent();
+            initData();
         }
+
+        private void initData()
+        {
+            gridView.Children.Add(new HomeView());
+        }
+
 
         internal void changeView(ISystemView view)
         {
             var control = view;
 
-            gridView.Children.Clear();
-            gridView.Children.Add(new HomeView());
+            
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)

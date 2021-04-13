@@ -52,6 +52,7 @@
                     </Grid>
                     <Button
                         Name="btnSearch"
+                        Style="{StaticResource RoundedButtonBlue}"
                         Grid.Column="1"
                         Margin="15 5 15 0"
                         Content="Buscar"
@@ -96,6 +97,7 @@
         <Grid Grid.Row="3">
             <StackPanel Margin="30 20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
                 <Button Name="btnClean" 
+                    Style="{StaticResource RoundedButtonGray}"
                     Content="Limpiar campos" 
                     HorizontalAlignment="Left" 
                     Height="50" 
@@ -103,6 +105,7 @@
                     Margin="20 0"
                     Click="btnClean_Click"/>
                 <Button Name="btnCalculate" 
+                    Style="{StaticResource RoundedButtonGray}"
                     Content="Calcular" 
                     HorizontalAlignment="Left" 
                     Height="50" 

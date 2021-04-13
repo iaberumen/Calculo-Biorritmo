@@ -36,6 +36,7 @@
                     Content="Buscar"
                     Margin="15 0"
                     Padding="30 0"
+                    VerticalAlignment="Bottom"
                     Height="30"/>
                 <StackPanel>
                     <Label
@@ -57,6 +58,7 @@
         <Grid Grid.Row="3">
             <StackPanel Margin="30 20" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <Button Name="btnAddEmployee" 
+                    Style="{StaticResource RoundedButtonGreen}"
                     Content="Agregar Empleado" 
                     HorizontalAlignment="Left" 
                     Height="50" 
