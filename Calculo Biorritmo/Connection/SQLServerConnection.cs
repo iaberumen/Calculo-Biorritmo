@@ -34,6 +34,22 @@ namespace Calculo_Biorritmo.Connection
                     con.ConnectionString = GetConnectionStrings();
                     con.Open();
                 }
+
+                if (con.State == ConnectionState.Open)
+                {
+                    SqlConnection con = new SqlConnection();
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["conString"].ToString();
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "SELECT * FROM empleado;";
+                    cmd.Connection = con;
+                    int a = cmd.ExecuteNonQuery();
+                    if (a == 1)
+                    {
+                        MessageBox.Show("No existe la Base de Datos");
+
+                    }
+                }
             }
             catch (Exception ex)
             {
