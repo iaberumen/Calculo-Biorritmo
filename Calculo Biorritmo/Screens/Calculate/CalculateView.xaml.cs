@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Calculo_Biorritmo.Screens.Calculate.BiorytmResults;
+using Calculo_Biorritmo.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,16 @@ namespace Calculo_Biorritmo.Screens.Calculate
     /// </summary>
     public partial class CalculateView : UserControl
     {
+        EmployeesVM vm = new EmployeesVM();
         public CalculateView()
         {
             InitializeComponent();
+            init();
+        }
+
+        public void init()
+        {
+            mainGrid.DataContext = vm;
         }
 
         private void tbId_KeyDown(object sender, KeyEventArgs e)
@@ -33,7 +42,7 @@ namespace Calculo_Biorritmo.Screens.Calculate
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("ASI");
+            
         }
 
         private void btnClean_Click(object sender, RoutedEventArgs e)
@@ -43,7 +52,8 @@ namespace Calculo_Biorritmo.Screens.Calculate
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-
+            var results = new Results();
+            results.ShowDialog();
         }
     }
 }

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Calculo_Biorritmo.Screens.Calculate"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
+    <Grid Name="mainGrid" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="AUTO"/>
             <RowDefinition Height="AUTO"/>
@@ -41,7 +41,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Label
-                            Content="No. Reloj"
+                            Content="CURP"
                             FontWeight="Bold"/>
                         <TextBox
                             Name="tbId"

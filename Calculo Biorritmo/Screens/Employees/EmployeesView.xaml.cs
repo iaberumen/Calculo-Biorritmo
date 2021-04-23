@@ -15,6 +15,10 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using Calculo_Biorritmo.Connection;
+using Calculo_Biorritmo.Data;
+using MediatR;
+using Autofac;
+using Calculo_Biorritmo.ApplicationLayer.Queries.Employees.Data;
 
 namespace Calculo_Biorritmo.Screens.Employees
 {
@@ -23,38 +27,43 @@ namespace Calculo_Biorritmo.Screens.Employees
     /// </summary>
     public partial class EmployeesView : UserControl
     {
+        private IMediator _mediator;
         public EmployeesView()
         {
             InitializeComponent();
+            init();
+        }
+
+        public async void init()
+        {
+            _mediator = DIContainer.container.Resolve<IMediator>();
+            await updateTable();
+
+        }
+
+        private async Task updateTable()
+        {
+            try
+            {
+                var response = await _mediator.Send(new GetEmployeeDataGridCommand()
+                {
+                    curp = tbBuscar.Text,
+                    
+                });
+
+                empleado.ItemsSource = response.data;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un error");
+            }
         }
 
         private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
         {
             var addNewEmployee = new addEmployee();
             addNewEmployee.ShowDialog();
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                DbClass.openConnectio();
-                DbClass.sql = "SELECT * FROM empleado;";
-                DbClass.cmd.CommandType = CommandType.Text;
-                DbClass.cmd.CommandText = DbClass.sql;
-
-                DbClass.da = new SqlDataAdapter(DbClass.cmd);
-                DbClass.dt = new DataTable();
-                DbClass.da.Fill(DbClass.dt);
-
-                empleado.ItemsSource = DbClass.dt.DefaultView;
-                DbClass.closeConnection();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ocurrio un error al obtener los datos");
-            }
-
+            init();
         }
 
         private void empleado_SelectionChanged(object sender, SelectionChangedEventArgs e)

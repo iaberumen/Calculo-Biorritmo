@@ -22,7 +22,7 @@
                     <Image HorizontalAlignment="Left" Source="/Resources/Images/BIO-RITMO.jpg" VerticalAlignment="Top" Width="190"/>
                 </Viewbox>
             </Grid>
-
+        
             <StackPanel Grid.Row="1" Orientation="Vertical" Background="DarkBlue">
                 <Button Name="Main" BorderBrush="Transparent" Margin="0,5,0,0" Width="Auto" Height="50" Padding="0" Cursor="Hand" Click="Main_Click">
                     <Button.Template>

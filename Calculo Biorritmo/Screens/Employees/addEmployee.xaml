@@ -30,7 +30,7 @@
                 FontWeight="Bold"
                 FontSize="16"/>
         </Grid>
-        <Grid Grid.Row="2" Margin="20 0">
+        <Grid Name="gridForm" Grid.Row="2" Margin="20 0">
             <StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -43,14 +43,15 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Label
-                            Content="Nombre completo"
+                            Content="CURP"
                             FontWeight="Bold"/>
                         <TextBox
                             Name="tbId"
                             Grid.Row="1"
                             Width="200"
                             HorizontalAlignment="Left"
-                            KeyDown="tbId_KeyDown"/>
+                            KeyDown="tbId_KeyDown"
+                            Text="{Binding curp}"/>
                     </Grid>
                     <!--<Button
                         Name="btnSearch"
@@ -69,19 +70,19 @@
                     FontWeight="Bold"/>-->
 
                 <Label
-                    Content="No. reloj "
+                    Content="Fecha de Nacimiento"
                     FontWeight="Bold"/>
-                <TextBox
-                Name="tbNoReloj"
+                <DatePicker
+                Name="tbFechaNacimiento"
                 Grid.Row="1"
                 Width="200"
                 HorizontalAlignment="Left"
                 KeyDown="tbNoReloj_KeyDown"/>
                 <Label
-                    Content="RFC"
+                    Content="Fecha del Accidente"
                     FontWeight="Bold"/>
-                <TextBox
-                Name="tbRfc"
+                <DatePicker
+                Name="tbFechaAccidente"
                 Grid.Row="1"
                 Width="200"
                 HorizontalAlignment="Left"

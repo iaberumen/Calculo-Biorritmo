@@ -13,11 +13,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
-using System.Data.SqlClient;
 using Calculo_Biorritmo.Connection;
 using System.Configuration;
-using System.Windows;
-
+using MediatR;
+using Calculo_Biorritmo.ApplicationLayer.UseCases.Employee.CreateEmployee;
+using Calculo_Biorritmo.ViewModel;
+using Calculo_Biorritmo.Utils.Data;
+using Autofac;
 
 namespace Calculo_Biorritmo.Screens.Employees
 {
@@ -26,9 +28,20 @@ namespace Calculo_Biorritmo.Screens.Employees
     /// </summary>
     public partial class addEmployee : Window
     {
+        EmployeesVM vm = new EmployeesVM();
+        private IMediator _mediator;
         public addEmployee()
         {
             InitializeComponent();
+            init();
+        }
+
+        public void init()
+        {
+            gridForm.DataContext = vm;
+            tbFechaNacimiento.SelectedDate = DateTime.Now;
+            tbFechaAccidente.SelectedDate = DateTime.Now;
+            _mediator = DIContainer.container.Resolve<IMediator>();
         }
 
         private void btnRegresar_Click(object sender, RoutedEventArgs e)
@@ -41,31 +54,13 @@ namespace Calculo_Biorritmo.Screens.Employees
             Close();
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private async void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["conString"].ToString();
-                con.Open();
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "insert into empleado (Nombre, RFC, Reloj) values (@nm,@rfc,@reloj);";
-                cmd.Parameters.AddWithValue("@nm", tbId.Text);
-                cmd.Parameters.AddWithValue("@rfc", tbNoReloj.Text);
-                cmd.Parameters.AddWithValue("@reloj", tbRfc.Text);
-                cmd.Connection = con;
-                int a = cmd.ExecuteNonQuery();
-
-                if (a == 1)
-                {
-                    MessageBox.Show("Se agrego correctamente");
-
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Ocurrio un error al obtener los datos");
-            }
+            vm.fecha_nacimiento = tbFechaAccidente.SelectedDate ?? DateTime.Now;
+            vm.fecha_accidente = tbFechaAccidente.SelectedDate ?? DateTime.Now;
+            var createCommand = new CreateEmployeeCommand(vm.curp, vm.fecha_nacimiento, vm.fecha_accidente);
+            await _mediator.Send(createCommand);
+            Close();
         }
 
         private void tbId_KeyDown(object sender, KeyEventArgs e)

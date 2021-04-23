@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calculo_Biorritmo.Models
+namespace Calculo_Biorritmo.ViewModel
 {
-    public class employee
+    class EmployeesVM
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         public string curp { get; set; }
         public DateTime fecha_nacimiento { get; set; }
@@ -25,5 +23,5 @@ namespace Calculo_Biorritmo.Models
         public int residuo_emocional { get; set; }
         public int residuo_intelectual { get; set; }
         public int residuo_intuicional { get; set; }
-}
+    }
 }

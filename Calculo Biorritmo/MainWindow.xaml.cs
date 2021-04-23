@@ -22,6 +22,10 @@ using System.Data.SqlClient;
 using System.Configuration;
 using Calculo_Biorritmo.Screens.Home;
 using Calculo_Biorritmo.Screens.Accidents;
+using Calculo_Biorritmo.Connection;
+using System.Data.Entity.Infrastructure;
+using Calculo_Biorritmo.Data;
+using System.Data.Entity.Migrations;
 
 namespace Calculo_Biorritmo
 {
@@ -34,24 +38,18 @@ namespace Calculo_Biorritmo
         {
             InitializeComponent();
             initData();
+            ApplyMigrations();
         }
 
         private void initData()
         {
+            DIContainer.container = AutofacRegistrations.Register();
             gridView.Children.Add(new HomeView());
-        }
-
-
-        internal void changeView(ISystemView view)
-        {
-            var control = view;
-
-            
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Application.Current.Shutdown();
         }
 
         private void Employees_Click(object sender, RoutedEventArgs e)
@@ -78,8 +76,6 @@ namespace Calculo_Biorritmo
             gridView.Children.Add(new HomeView());
         }
 
-        
-
         private void Accident_Click(object sender, RoutedEventArgs e)
         {
             resetColors();
@@ -95,5 +91,26 @@ namespace Calculo_Biorritmo
             Biorritm.BorderBrush = Brushes.Transparent;
             Accident.BorderBrush = Brushes.Transparent;
         }
+
+        private void ApplyMigrations()
+        {
+            var dbInfo = new DbConnectionInfo(ConfigurationManager.ConnectionStrings["BiorytmDb"].ToString(), "System.Data.SqlClient");
+            var config = new Calculo_Biorritmo.Migrations.Configuration();
+            config.MigrationsAssembly = typeof(EmployeeEntity).Assembly;
+            config.MigrationsNamespace = "AlcyonPos.Migrations";
+            config.ContextKey = "AlcyonPos.Migrations.Configuration";
+            config.TargetDatabase = dbInfo;
+
+            var migrator = new DbMigrator(config);
+            migrator.Configuration.TargetDatabase = dbInfo;
+            var migrations = migrator.GetPendingMigrations();
+
+            if (!migrations.Any())
+                return;
+
+            migrator.Update();
+        }
+
+
     }
 }
