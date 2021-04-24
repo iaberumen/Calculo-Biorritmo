@@ -23,12 +23,13 @@
         </Grid>
         <Grid Grid.Row="1">
             <TextBlock
-            Text="Para calcular el biorritmo, Complete el siguiente formulario"
+            Text="Para calcular el biorritmo, escribe el CURP del empleado y presionar el boton de buscar o la telca enter"
+                TextWrapping="Wrap"
                 Margin="20"
                 FontWeight="Bold"
                 FontSize="16"/>
         </Grid>
-        <Grid Grid.Row="2" Margin="20 0">
+        <Grid Name="gridForm" Grid.Row="2" Margin="20 0">
             <StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -44,11 +45,12 @@
                             Content="CURP"
                             FontWeight="Bold"/>
                         <TextBox
-                            Name="tbId"
+                            Name="tbCurp"
                             Grid.Row="1"
                             Width="200"
                             HorizontalAlignment="Left"
-                            KeyDown="tbId_KeyDown"/>
+                            KeyDown="tbId_KeyDown"
+                            Text="{Binding curp}"/>
                     </Grid>
                     <Button
                         Name="btnSearch"
@@ -74,21 +76,17 @@
                     Content="Fecha de nacimiento"
                     FontWeight="Bold"/>
                 <TextBox
+                    Name="tbFechaNacimiento"
                     Width="200"
                     IsEnabled="False"
                     HorizontalAlignment="Left"/>
                 <Label
-                    Content="Activo"
+                    Content="Dias Vividos"
                     FontWeight="Bold"/>
                 <TextBox
+                    Name="tbDiasVividos"
                     Width="100"
                     IsEnabled="False"
-                    HorizontalAlignment="Left"/>
-                <Label
-                    Content="Mes"
-                    FontWeight="Bold"/>
-                <ComboBox
-                    Width="120"
                     HorizontalAlignment="Left"/>
             </StackPanel>
             

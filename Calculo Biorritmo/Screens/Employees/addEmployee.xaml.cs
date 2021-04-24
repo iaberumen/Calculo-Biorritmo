@@ -39,14 +39,8 @@ namespace Calculo_Biorritmo.Screens.Employees
         public void init()
         {
             gridForm.DataContext = vm;
-            tbFechaNacimiento.SelectedDate = DateTime.Now;
             tbFechaAccidente.SelectedDate = DateTime.Now;
             _mediator = DIContainer.container.Resolve<IMediator>();
-        }
-
-        private void btnRegresar_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

@@ -130,7 +130,6 @@
     <Compile Include="ApplicationLayer\Queries\Employees\Data\GetEmployeeDataGridResponse.cs" />
     <Compile Include="ApplicationLayer\UseCases\Employee\CreateEmployee\CreateEmployeeCommand.cs" />
     <Compile Include="ApplicationLayer\UseCases\Employee\CreateEmployee\CreateEmployeeHander.cs" />
-    <Compile Include="ApplicationLayer\UseCases\Employee\CreateEmployee\IRequestHander.cs" />
     <Compile Include="ApplicationLayer\UseCases\Employee\UpdateEmployee\UpdateEmployeeCommand.cs" />
     <Compile Include="ApplicationLayer\UseCases\Employee\UpdateEmployee\UpdateEmployeeHandler.cs" />
     <Compile Include="AutofacRegistrations.cs" />
