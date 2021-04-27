@@ -13,7 +13,7 @@
             <RowDefinition/>
             <RowDefinition Height="AUTO"/>
         </Grid.RowDefinitions>
-        <Grid Background="DarkBlue">
+        <Grid Background="{StaticResource PrimaryHuePrincipal}">
             <Label 
                 HorizontalAlignment="Center"
                 Content="CALCULAR"
@@ -23,11 +23,10 @@
         </Grid>
         <Grid Grid.Row="1">
             <TextBlock
-            Text="Para calcular el biorritmo, escribe el CURP del empleado y presionar el boton de buscar o la telca enter"
+            Text="Para calcular el biorritmo, escribe el CURP del empleado y presionar el boton de buscar o la tecla enter"
                 TextWrapping="Wrap"
                 Margin="20"
-                FontWeight="Bold"
-                FontSize="16"/>
+                Style="{StaticResource InformationContent}"/>
         </Grid>
         <Grid Name="gridForm" Grid.Row="2" Margin="20 0">
             <StackPanel>
@@ -36,58 +35,85 @@
                         <ColumnDefinition Width="AUTO"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Label
-                            Content="CURP"
-                            FontWeight="Bold"/>
-                        <TextBox
-                            Name="tbCurp"
-                            Grid.Row="1"
-                            Width="200"
-                            HorizontalAlignment="Left"
+                    <StackPanel Orientation="Vertical">
+
+                        <Label Style="{StaticResource TitleInformation}"  Margin="20,0">CURP</Label>
+                        <Border Background="White" CornerRadius="10" Width="280" BorderBrush="LightGray" BorderThickness="1 1 2 4">
+                            <TextBox Name="tbCurp" 
+                             MaxLength="10" 
+                             Height="20"
+                             BorderThickness="0"
+                             Margin="6" 
+                             HorizontalAlignment="Center"
+                             Width="230"
                             KeyDown="tbId_KeyDown"
-                            Text="{Binding curp}"/>
-                    </Grid>
+                             TextAlignment="Center" 
+                             FontWeight="Bold" 
+                             FontSize="16"
+                             Text="{Binding curp}"/>
+                        </Border>
+                        
+                    </StackPanel>
                     <Button
                         Name="btnSearch"
                         Style="{StaticResource RoundedButtonBlue}"
                         Grid.Column="1"
                         Margin="15 5 15 0"
                         Content="Buscar"
-                        Height="30"
                         Width="100"
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Left"
                         Click="btnSearch_Click"/>
                 </Grid>
-                
-                <Label
-                    Content="Nombre"
-                    FontWeight="Bold"/>
-                <TextBox
-                    Width="200"
-                    IsEnabled="False"
-                    HorizontalAlignment="Left"/>
-                <Label
-                    Content="Fecha de nacimiento"
-                    FontWeight="Bold"/>
-                <TextBox
-                    Name="tbFechaNacimiento"
-                    Width="200"
-                    IsEnabled="False"
-                    HorizontalAlignment="Left"/>
-                <Label
-                    Content="Dias Vividos"
-                    FontWeight="Bold"/>
-                <TextBox
-                    Name="tbDiasVividos"
-                    Width="100"
-                    IsEnabled="False"
-                    HorizontalAlignment="Left"/>
+
+                <StackPanel Orientation="Vertical">
+                    <Label Style="{StaticResource TitleInformation}"  Margin="20,0">Accidentes registrados</Label>
+                    <Border Background="White" CornerRadius="10" Width="280" HorizontalAlignment="Left" BorderBrush="LightGray" BorderThickness="1 1 2 4">
+                        <TextBox Name="tbAccidentes" 
+                             MaxLength="10" 
+                             Height="20"
+                             BorderThickness="0"
+                             Margin="6" 
+                             IsEnabled="False"
+                             Width="230"
+                             TextAlignment="Center" 
+                             FontWeight="Bold" 
+                             FontSize="16"/>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <Label Style="{StaticResource TitleInformation}"  Margin="20,0">Fecha de nacimiento</Label>
+                    <Border Background="White" CornerRadius="10" Width="280" HorizontalAlignment="Left" BorderBrush="LightGray" BorderThickness="1 1 2 4">
+                        <TextBox Name="tbFechaNacimiento" 
+                             MaxLength="10" 
+                             Height="20"
+                             BorderThickness="0"
+                             Margin="6" 
+                             IsEnabled="False"
+                             Width="230"
+                             TextAlignment="Center" 
+                             FontWeight="Bold" 
+                             FontSize="16"/>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <Label Style="{StaticResource TitleInformation}"  Margin="20,0">Dias Vividos</Label>
+                    <Border Background="White" CornerRadius="10" Width="280" HorizontalAlignment="Left" BorderBrush="LightGray" BorderThickness="1 1 2 4">
+                        <TextBox Name="tbDiasVividos"
+                             MaxLength="10" 
+                             Height="20"
+                             BorderThickness="0"
+                             Margin="6" 
+                             IsEnabled="False"
+                             Width="230"
+                             TextAlignment="Center" 
+                             FontWeight="Bold" 
+                             FontSize="16"/>
+                    </Border>
+                </StackPanel>
+
             </StackPanel>
             
             
@@ -98,16 +124,16 @@
                     Style="{StaticResource RoundedButtonGray}"
                     Content="Limpiar campos" 
                     HorizontalAlignment="Left" 
+                    Padding="20 0"
                     Height="50" 
-                    Width="120"
                     Margin="20 0"
                     Click="btnClean_Click"/>
                 <Button Name="btnCalculate" 
-                    Style="{StaticResource RoundedButtonGray}"
+                    Style="{StaticResource RoundedButtonGreen}"
                     Content="Calcular" 
                     HorizontalAlignment="Left" 
+                    Padding="20 0"
                     Height="50" 
-                    Width="120"
                     Click="btnCalculate_Click"/>
             </StackPanel>
 

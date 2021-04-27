@@ -50,7 +50,7 @@ namespace Calculo_Biorritmo.Screens.Employees
 
         private async void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            vm.fecha_nacimiento = tbFechaAccidente.SelectedDate ?? DateTime.Now;
+            vm.fecha_nacimiento = tbFechaNacimiento.SelectedDate ?? DateTime.Now;
             vm.fecha_accidente = tbFechaAccidente.SelectedDate ?? DateTime.Now;
             var createCommand = new CreateEmployeeCommand(vm.curp, vm.fecha_nacimiento, vm.fecha_accidente);
             await _mediator.Send(createCommand);

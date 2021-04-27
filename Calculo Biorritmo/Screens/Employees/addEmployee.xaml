@@ -97,14 +97,12 @@
                     Content="Cancelar" 
                     HorizontalAlignment="Left" 
                     Height="50" 
-                    Width="120"
                     Margin="20 0"
                     Click="btnCancel_Click"/>
                 <Button Name="btnAdd" 
                     Content="Agregar" 
                     HorizontalAlignment="Left" 
                     Height="50" 
-                    Width="120"
                     Click="btnAdd_Click"/>
             </StackPanel>
 

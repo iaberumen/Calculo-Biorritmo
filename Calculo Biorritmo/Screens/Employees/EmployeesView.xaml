@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Calculo_Biorritmo.Screens.Employees"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
@@ -14,7 +15,7 @@
             <RowDefinition Height="AUTO"/>
         </Grid.RowDefinitions>
 
-        <Grid Background="DarkBlue">
+        <Grid Background="{StaticResource PrimaryHuePrincipal}">
             <Label 
                 HorizontalAlignment="Center"
                 Content="EMPLEADOS"
@@ -23,37 +24,44 @@
                 Foreground="White"/>
         </Grid>
         <Grid Grid.Row="1">
-            <StackPanel Orientation="Horizontal" Margin="30 10 10 0">
-                <StackPanel>
-                    <Label
-                        Content="Buscar"/>
-                    <TextBox
-                        Name="tbBuscar"
-                        Width="150"/>
-                </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="30 20 10 0">
+
+                <Border Background="White" CornerRadius="10" Width="280" HorizontalAlignment="Left" BorderBrush="LightGray" BorderThickness="1 1 2 4">
+                    <TextBox Name="tbBuscar"
+                             Height="20"
+                             BorderThickness="0"
+                             Margin="6" 
+                             Width="230"
+                             FontWeight="Bold" 
+                             materialDesign:HintAssist.Hint="Buscar por curp"
+                             FontSize="16"/>
+                </Border>
                 <Button
                     Style="{StaticResource RoundedButtonBlue}"
                     Content="Buscar"
                     Margin="15 0"
                     Padding="30 0"
                     VerticalAlignment="Bottom"
-                    Height="30"/>
-                <StackPanel>
-                    <Label
-                        Content="Inactivos"/>
-                    <CheckBox
-                        HorizontalAlignment="Center"/>
-                </StackPanel>
+                    Height="40"/>
             </StackPanel>
         </Grid>
-        <Grid Grid.Row="2" Margin="20 30">
+        <Grid  Grid.Row="2" Margin="20 30">
             <DataGrid Name ="empleado" 
                       SelectionChanged="empleado_SelectionChanged"
+                      IsReadOnly="True"
+                      AutoGenerateColumns="False"
+                      CanUserResizeRows="False"
+                    CanUserResizeColumns="False"
+                    CanUserReorderColumns="False"
+                    CanUserSortColumns="False"
+                      ColumnHeaderStyle="{StaticResource ColumnHeaderStyle1}"
+                      Foreground="{StaticResource PrimaryText}"
                       ColumnWidth="*">
                 <DataGrid.Columns>
-                    <!--<DataGridTextColumn Header="Nombre" Width="AUTO"/>
-                    <DataGridTextColumn Header="RFC" Width="*"/>
-                    <DataGridTextColumn Header="Reloj" Width="*"/>-->
+                    <DataGridTextColumn Header="Curp" Binding="{Binding curp}" />
+                    <DataGridTextColumn Header="Fecha Nacimiento" Binding="{Binding fecha_nacimiento}" />
+                    <DataGridTextColumn Header="Fecha de Accidente" Binding="{Binding fecha_accidente}" />
+                    <DataGridTextColumn Header="Dias vividos" Binding="{Binding dias_vividos}" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

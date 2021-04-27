@@ -23,6 +23,13 @@ namespace Calculo_Biorritmo.Screens.Home
         public HomeView()
         {
             InitializeComponent();
+            init();
+        }
+
+        public void init()
+        {
+            lbAccidentNum.Content = "";
+            lbEmployeeNum.Content = "";
         }
     }
 }

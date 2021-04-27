@@ -76,18 +76,21 @@ namespace Calculo_Biorritmo.Screens.Calculate
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            var biorritmoFisico = Fisico(int.Parse(tbDiasVividos.Text));
+            var biorritmoFisico = CalcularBiorritmo(15943,23);
+            var biorritmoEmocional = CalcularBiorritmo(15943, 28);
+            var biorritmoIntelectual = CalcularBiorritmo(15943, 33);
+            var biorritmoIntuicional = CalcularBiorritmo(15943, 38);
             var results = new Results();
             results.ShowDialog(); 
         }
 
-        public List<Double> Fisico(int diasVividos)
+        public List<Double> CalcularBiorritmo(int diasVividos,int teoria)
         {
             List<Double> values = new List<Double>();
             
             for (int i = 0; i < 30; i++)
             {
-                var dayValue = (2 * Math.PI * (diasVividos+i))/23;
+                var dayValue = (2 * Math.PI * (diasVividos+i))/teoria;
                 var sinValue = Math.Sin(dayValue);
                 var roundedValue = Math.Round(sinValue, 9, MidpointRounding.ToEven);
                 values.Add(roundedValue);
