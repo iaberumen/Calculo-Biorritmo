@@ -16,11 +16,10 @@ namespace Calculo_Biorritmo.Models
         public int anio { get; set; }
         public int mes { get; set; }
         public int dia { get; set; }
-        public DateTime fecha_accidente { get; set; }
+        public DateTime? fecha_accidente { get; set; }
         public int anio_acc { get; set; }
         public int mes_acc { get; set; }
         public int dia_acc { get; set; }
-        public int dias_vividos { get; set; }
         public int residuo_fisico { get; set; }
         public int residuo_emocional { get; set; }
         public int residuo_intelectual { get; set; }

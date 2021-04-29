@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Autofac;
+using Calculo_Biorritmo.ApplicationLayer.Queries.Accidents.Data;
+using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,53 @@ namespace Calculo_Biorritmo.Screens.Accidents
     /// </summary>
     public partial class AccidentView : UserControl
     {
+        private IMediator _mediator;
         public AccidentView()
         {
             InitializeComponent();
+            init();
+        }
+
+        public async void init()
+        {
+            _mediator = DIContainer.container.Resolve<IMediator>();
+            await updateTable();
+
+        }
+
+        private async Task updateTable()
+        {
+            try
+            {
+                var response = await _mediator.Send(new GetAccidentDataGridCommand()
+                {
+                    curp = tbBuscar.Text,
+
+                });
+
+                empleado.ItemsSource = response.data;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un error");
+            }
+        }
+
+        private void btnAddAccident_Click(object sender, RoutedEventArgs e)
+        {
+            var addNewEmployee = new addAccident();
+            addNewEmployee.ShowDialog();
+            init();
+        }
+
+        private void empleado_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private async void btnBuscar_Click(object sender, RoutedEventArgs e)
+        {
+            await updateTable();
         }
     }
 }

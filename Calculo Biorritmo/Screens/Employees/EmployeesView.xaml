@@ -37,10 +37,12 @@
                              FontSize="16"/>
                 </Border>
                 <Button
+                    Name="btnBuscar"
                     Style="{StaticResource RoundedButtonBlue}"
                     Content="Buscar"
                     Margin="15 0"
                     Padding="30 0"
+                    Click="btnBuscar_Click"
                     VerticalAlignment="Bottom"
                     Height="40"/>
             </StackPanel>
@@ -60,7 +62,6 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Curp" Binding="{Binding curp}" />
                     <DataGridTextColumn Header="Fecha Nacimiento" Binding="{Binding fecha_nacimiento}" />
-                    <DataGridTextColumn Header="Fecha de Accidente" Binding="{Binding fecha_accidente}" />
                     <DataGridTextColumn Header="Dias vividos" Binding="{Binding dias_vividos}" />
                 </DataGrid.Columns>
             </DataGrid>

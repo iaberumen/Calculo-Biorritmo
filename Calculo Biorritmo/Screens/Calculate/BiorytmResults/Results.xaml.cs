@@ -21,10 +21,14 @@ namespace Calculo_Biorritmo.Screens.Calculate.BiorytmResults
     /// </summary>
     public partial class Results : Window
     {
-        public Results()
+        public Results(string accidentes, string fechaNacimiento, string curp, List<Double> fisico, List<Double> emocional, List<Double> intelectual, List<Double> intuicional)
         {
             InitializeComponent();
             init();
+
+            lblAccidentes.Content = accidentes;
+            lblFechaNacimiento.Content = fechaNacimiento;
+            lblCurp.Content = curp;
         }
 
         public void init()
@@ -41,7 +45,51 @@ namespace Calculo_Biorritmo.Screens.Calculate.BiorytmResults
                 ItemsSource = linePoints
             };
 
+            var linePoints2 = new[]
+            {
+                new DataPoint(3,4),
+                new DataPoint(4,3),
+            };
+
+            var lineSeries2 = new LineSeries
+            {
+                StrokeThickness = 2,
+                ItemsSource = linePoints2
+            };
+
+            var linePoints3 = new[]
+            {
+                new DataPoint(6,8),
+                new DataPoint(8,6),
+            };
+
+            var lineSeries3 = new LineSeries
+            {
+                StrokeThickness = 2,
+                ItemsSource = linePoints3
+            };
+
+            var linePoints4 = new[]
+            {
+                new DataPoint(10,12),
+                new DataPoint(12,10),
+            };
+
+            var lineSeries4 = new LineSeries
+            {
+                StrokeThickness = 2,
+                ItemsSource = linePoints4
+            };
+
             asd.Series.Add(lineSeries);
+            asd.Series.Add(lineSeries2);
+            asd.Series.Add(lineSeries3);
+            asd.Series.Add(lineSeries4);
+        }
+
+        private void btnRegresar_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

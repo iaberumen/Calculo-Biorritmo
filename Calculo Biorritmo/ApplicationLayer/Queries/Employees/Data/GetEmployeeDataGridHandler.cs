@@ -1,5 +1,6 @@
 ﻿using Calculo_Biorritmo.ApplicationLayer.Queries.Employees.Data;
 using Calculo_Biorritmo.Data;
+using Calculo_Biorritmo.Utils.Data;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -34,9 +35,7 @@ namespace Calculo_Biorritmo.ApplicationLayer.Queries.Employees
             var query = $@"
                              SELECT
                              curp,
-                             fecha_nacimiento,
-                             fecha_accidente,
-                             dias_vividos
+                             fecha_nacimiento
                              from Employee";
 
             
@@ -49,6 +48,12 @@ namespace Calculo_Biorritmo.ApplicationLayer.Queries.Employees
                 query += $@"{addtitionalFilters}";
 
             response.data = await _ctx.Database.SqlQuery<employeeGridItem>(query, parameters.ToArray()).ToListAsync();
+
+            foreach (employeeGridItem item in response.data){
+                int days = DataCalc.daysLived(item.fecha_nacimiento);
+                item.dias_vividos = days;
+            }
+
             return response;
         }
     }

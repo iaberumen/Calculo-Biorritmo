@@ -132,6 +132,7 @@
                     Style="{StaticResource RoundedButtonGreen}"
                     Content="Calcular" 
                     HorizontalAlignment="Left" 
+                        IsEnabled="False"
                     Padding="20 0"
                     Height="50" 
                     Click="btnCalculate_Click"/>

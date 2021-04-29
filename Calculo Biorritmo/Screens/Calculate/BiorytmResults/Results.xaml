@@ -8,11 +8,57 @@
         mc:Ignorable="d"
         Title="Results" Height="450" Width="800">
     <Grid>
-        <oxy:Plot Name="asd">
-            <oxy:Plot.Axes>
-                <oxy:LinearAxis Position="Bottom" Minimum="-20" Maximum="80" />
-                <oxy:LinearAxis Position="Left" Minimum="-10" Maximum="10" />
-            </oxy:Plot.Axes>
-        </oxy:Plot>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".4*"/>
+                    <ColumnDefinition Width=".6*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <Label Content="CURP"/>
+                        <Label Content="Fecha de nacimiento"/>
+                        <Label Content="Accidentes"/>
+
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Name="lblCurp"/>
+                        <Label Name="lblFechaNacimiento"/>
+                        <Label Name="lblAccidentes"/>
+                    </StackPanel>
+
+                </Grid>
+
+            </Grid>
+            <oxy:Plot Grid.Row="1" Name="asd">
+                <oxy:Plot.Axes>
+                    <oxy:LinearAxis Position="Bottom" Minimum="-20" Maximum="80" />
+                    <oxy:LinearAxis Position="Left" Minimum="-10" Maximum="10" />
+                </oxy:Plot.Axes>
+            </oxy:Plot>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 10">
+                <Button Name="btnRegresar" 
+                    Content="Regresar" 
+                    HorizontalAlignment="Left" 
+                        Style="{StaticResource RoundedButtonGray}"
+                        Padding="20 0"
+                    Height="50" 
+                    Margin="20 0"
+                    Click="btnRegresar_Click"/>
+                
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

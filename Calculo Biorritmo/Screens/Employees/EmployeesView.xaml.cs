@@ -70,5 +70,10 @@ namespace Calculo_Biorritmo.Screens.Employees
         {
 
         }
+
+        private async void btnBuscar_Click(object sender, RoutedEventArgs e)
+        {
+            await updateTable();
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace Calculo_Biorritmo.ApplicationLayer.UseCases.Employee.CreateEmployee
 {
     class CreateEmployeeCommand : IRequest
     {
-        public CreateEmployeeCommand(string curp,DateTime fecha_nacimiento,DateTime fecha_accidente)
+        public CreateEmployeeCommand(string curp,DateTime fecha_nacimiento,DateTime? fecha_accidente)
         {
             this.curp = curp;
             this.dias_vividos = dias_vividos;
@@ -19,7 +19,7 @@ namespace Calculo_Biorritmo.ApplicationLayer.UseCases.Employee.CreateEmployee
 
         public string curp { get; set; }
         public int dias_vividos { get; set; }
-        public DateTime fecha_accidente { get; set; }
+        public DateTime? fecha_accidente { get; set; }
         public DateTime fecha_nacimiento { get; set; }
     }
 }

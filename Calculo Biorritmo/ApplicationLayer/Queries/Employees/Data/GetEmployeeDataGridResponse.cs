@@ -20,6 +20,5 @@ namespace Calculo_Biorritmo.ApplicationLayer.Queries.Employees.Data
         public string curp { get; set; }
         public int dias_vividos { get; set; }
         public DateTime fecha_nacimiento { get; set; }
-        public DateTime fecha_accidente { get; set; }
     }
 }

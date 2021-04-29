@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calculo_Biorritmo.ApplicationLayer.Queries.Employees.Data
+namespace Calculo_Biorritmo.ApplicationLayer.Queries.Accidents.Data
 {
-    class GetEmployeeDataGridCommand : IRequest<GetEmployeeDataGridResponse>
+    public class GetAccidentDataGridCommand : IRequest<GetAccidentDataGridResponse>
     {
         public string curp { get; set; }
     }

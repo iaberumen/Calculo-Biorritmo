@@ -10,6 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="AUTO"/>
             <RowDefinition/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
 
@@ -24,9 +25,8 @@
 
         <Grid Grid.Row="1" Margin="0 0 10 0">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height=".3*"/>
+                <RowDefinition Height=".6*"/>
             </Grid.RowDefinitions>
             <Grid >
                 <Grid.ColumnDefinitions>
@@ -39,8 +39,8 @@
                          CornerRadius="10">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
+                                <RowDefinition Height=".6*"/>
+                                <RowDefinition Height=".4*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*" />
@@ -82,8 +82,8 @@
                          CornerRadius="10" Grid.RowSpan="2">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
+                                <RowDefinition Height=".6*"/>
+                                <RowDefinition Height=".4*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*" />
@@ -119,8 +119,41 @@
                     </Border>
                 </Grid>
             </Grid>
-            
-            
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label HorizontalAlignment="Center" Style="{StaticResource TitleInformation}" Content="Empleados en riesgo"/>
+                <Grid  Grid.Row="1" Margin="20 10">
+                    <DataGrid Name ="empleado" 
+                    IsReadOnly="True"
+                    AutoGenerateColumns="False"
+                    CanUserResizeRows="False"
+                    CanUserResizeColumns="False"
+                    CanUserReorderColumns="False"
+                    CanUserSortColumns="False"
+                      ColumnHeaderStyle="{StaticResource ColumnHeaderStyle1}"
+                      Foreground="{StaticResource PrimaryText}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*" Header="Curp" Binding="{Binding curp}" />
+                            <DataGridTextColumn Width="110" Header="Fisico" Binding="{Binding residuo_fisico}" />
+                            <DataGridTextColumn Width="120" Header="Emocional" Binding="{Binding residuo_emocional}" />
+                            <DataGridTextColumn Width="120" Header="Intelectual" Binding="{Binding residuo_intelectual}" />
+                            <DataGridTextColumn Width="120" Header="Intuicional" Binding="{Binding residuo_intuicional}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2" >
+                    <Label 
+                       Content="Total: "/>
+                    <Label 
+                        Content="0"/>
+                </StackPanel>
+                
+            </Grid>
         </Grid>
 
     </Grid>

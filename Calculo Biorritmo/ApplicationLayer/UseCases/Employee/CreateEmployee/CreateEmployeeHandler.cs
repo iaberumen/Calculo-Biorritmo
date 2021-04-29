@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace Calculo_Biorritmo.ApplicationLayer.UseCases.Employee.CreateEmployee
 {
-    class CreateEmployeeHander : IRequestHandler<CreateEmployeeCommand>
+    class CreateEmployeeHandler : IRequestHandler<CreateEmployeeCommand>
     {
         private readonly EmployeeEntity _ctx;
 
-        public CreateEmployeeHander(EmployeeEntity ctx)
+        public CreateEmployeeHandler(EmployeeEntity ctx)
         {
             _ctx = ctx ?? throw new ArgumentNullException(nameof(ctx));
         }
@@ -26,8 +26,8 @@ namespace Calculo_Biorritmo.ApplicationLayer.UseCases.Employee.CreateEmployee
             var employee = new employee();
             employee.id = int.Parse(tools.generateId());
             employee.curp = request.curp;
-            int days = DataCalc.daysLived(request.fecha_nacimiento);
-            employee.dias_vividos = days;
+            //int days = DataCalc.daysLived(request.fecha_nacimiento);
+            //employee.dias_vividos = days;
             employee.fecha_accidente = request.fecha_accidente;
             employee.fecha_nacimiento = request.fecha_nacimiento;
 

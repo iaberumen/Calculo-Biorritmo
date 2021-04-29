@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Calculo_Biorritmo.ApplicationLayer.Queries.Employees.Data;
+using Calculo_Biorritmo.Data;
+using Calculo_Biorritmo.Extensions.ContextExtensions;
 using Calculo_Biorritmo.Screens.Calculate.BiorytmResults;
 using Calculo_Biorritmo.ViewModel;
 using MediatR;
@@ -27,6 +29,8 @@ namespace Calculo_Biorritmo.Screens.Calculate
     {
         EmployeesVM vm = new EmployeesVM();
         private IMediator _mediator;
+        private int dias;
+        private string _fechaNacimiento;
         public CalculateView()
         {
             InitializeComponent();
@@ -61,26 +65,35 @@ namespace Calculo_Biorritmo.Screens.Calculate
                 MessageBox.Show("No se encontro un empleado registrado con ese curp");
                 return;
             }
-                
 
-            tbDiasVividos.Text = response.data.Select(x => x.dias_vividos).First().ToString();
-            tbFechaNacimiento.Text = response.data.Select(x => x.fecha_nacimiento).First().ToString();
+            using (var ctx = new EmployeeEntity())
+                tbAccidentes.Text = ctx.employees.totalAccidentsByCurp(tbCurp.Text).ToString();
+
+
+            tbDiasVividos.Text = dias.ToString();
+            _fechaNacimiento = response.data.Select(x => x.fecha_nacimiento).First().ToString();
+            tbFechaNacimiento.Text = _fechaNacimiento;
+            btnCalculate.IsEnabled = true;
         }
 
         private void btnClean_Click(object sender, RoutedEventArgs e)
         {
             tbCurp.Text = "";
+            tbAccidentes.Text = "";
             tbDiasVividos.Text = "";
             tbFechaNacimiento.Text = "";
+            btnCalculate.IsEnabled = false;
         }
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            var biorritmoFisico = CalcularBiorritmo(15943,23);
-            var biorritmoEmocional = CalcularBiorritmo(15943, 28);
-            var biorritmoIntelectual = CalcularBiorritmo(15943, 33);
-            var biorritmoIntuicional = CalcularBiorritmo(15943, 38);
-            var results = new Results();
+            dias = int.Parse(tbDiasVividos.Text);
+            var biorritmoFisico = CalcularBiorritmo(dias,23);
+            var biorritmoEmocional = CalcularBiorritmo(dias, 28);
+            var biorritmoIntelectual = CalcularBiorritmo(dias, 33);
+            var biorritmoIntuicional = CalcularBiorritmo(dias, 38);
+
+            var results = new Results(tbAccidentes.Text,_fechaNacimiento,tbCurp.Text,biorritmoFisico,biorritmoEmocional,biorritmoIntelectual,biorritmoIntuicional);
             results.ShowDialog(); 
         }
 

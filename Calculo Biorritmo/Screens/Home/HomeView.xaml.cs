@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Calculo_Biorritmo.Data;
+using Calculo_Biorritmo.Extensions.ContextExtensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,8 +30,16 @@ namespace Calculo_Biorritmo.Screens.Home
 
         public void init()
         {
-            lbAccidentNum.Content = "";
-            lbEmployeeNum.Content = "";
+            int registers;
+            int accidents;
+
+            using (var ctx = new EmployeeEntity())
+                registers = ctx.employees.totalRegisters();
+            using (var ctx = new EmployeeEntity())
+                accidents = ctx.employees.totalAccidents();
+
+            lbAccidentNum.Content = accidents.ToString();
+            lbEmployeeNum.Content = registers.ToString();
         }
     }
 }

@@ -1,15 +1,14 @@
-﻿<Window x:Class="Calculo_Biorritmo.Screens.Employees.addEmployee"
+﻿<Window x:Class="Calculo_Biorritmo.Screens.Accidents.addAccident"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Calculo_Biorritmo.Screens.Employees"
+        xmlns:local="clr-namespace:Calculo_Biorritmo.Screens.Accidents"
         mc:Ignorable="d"
         WindowStyle="None"
         Background="{x:Null}"
         AllowsTransparency="True"
-        Title="Agregar Empleado" Height="450" Width="600">
-    
+        Title="addAccident" Height="450" Width="800">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="AUTO"/>
@@ -17,18 +16,18 @@
             <RowDefinition/>
             <RowDefinition Height="AUTO"/>
         </Grid.RowDefinitions>
-       
+
         <Grid Background="{StaticResource PrimaryHuePrincipal}">
             <Label 
                 HorizontalAlignment="Center"
-                Content="Agregar Empleado"
+                Content="Registrar accidente"
                 FontSize="22"
                 FontWeight="Bold"
                 Foreground="White"/>
         </Grid>
         <Grid Grid.Row="1">
             <TextBlock
-            Text="Para Agregar un empleado, Complete el siguiente formulario"
+            Text="Para registrar un accidente, Complete el siguiente formulario."
                 Margin="20"
                 FontWeight="Bold"
                 FontSize="16"/>
@@ -54,20 +53,13 @@
                     Content="Nombre"
                     FontWeight="Bold"/>-->
 
-                <Label Style="{StaticResource TitleInformation}"  >Fecha de Nacimiento*</Label>
-                <DatePicker
-                Name="tbFechaNacimiento"
-                Grid.Row="1"
-                Width="200"
-                HorizontalAlignment="Left"
-                KeyDown="tbNoReloj_KeyDown"/>
-                <Label Style="{StaticResource TitleInformation}"  >Fecha del accidente</Label>
+                
+                <Label Style="{StaticResource TitleInformation}"  >Fecha del accidente*</Label>
                 <DatePicker
                 Name="tbFechaAccidente"
                 Grid.Row="1"
                 Width="200"
-                HorizontalAlignment="Left"
-                KeyDown="tbRfc_KeyDown"/>
+                HorizontalAlignment="Left"/>
             </StackPanel>
 
 
@@ -82,13 +74,13 @@
                     Height="50" 
                     Margin="20 0"
                     Click="btnCancel_Click"/>
-                <Button Name="btnAdd" 
-                    Content="Agregar" 
+                <Button Name="btnRegister" 
+                    Content="Registrar" 
                         Style="{StaticResource RoundedButtonGreen}"
                         Padding="20 0"
                     HorizontalAlignment="Left" 
                     Height="50" 
-                    Click="btnAdd_Click"/>
+                    Click="btnRegister_Click"/>
             </StackPanel>
 
         </Grid>
