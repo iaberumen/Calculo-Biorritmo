@@ -146,7 +146,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2" >
+                <StackPanel Margin="0 0 20 0" Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2" >
                     <Label 
                        Content="Total: "/>
                     <Label 
