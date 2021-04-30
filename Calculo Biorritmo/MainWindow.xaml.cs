@@ -36,9 +36,9 @@ namespace Calculo_Biorritmo
     {
         public MainWindow()
         {
+            ApplyMigrations();
             InitializeComponent();
             initData();
-            ApplyMigrations();
         }
 
         private void initData()
