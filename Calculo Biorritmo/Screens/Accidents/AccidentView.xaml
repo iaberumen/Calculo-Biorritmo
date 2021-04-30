@@ -6,34 +6,38 @@
              xmlns:local="clr-namespace:Calculo_Biorritmo.Screens.Accidents"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="AUTO"/>
-            <RowDefinition Height="AUTO"/>
-            <RowDefinition/>
-            <RowDefinition Height="AUTO"/>
-        </Grid.RowDefinitions>
-        <Grid Background="{StaticResource PrimaryHuePrincipal}">
-            <Label 
+    <Border Background="White" CornerRadius="0 30 30 0">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition/>
+                <RowDefinition Height="AUTO"/>
+            </Grid.RowDefinitions>
+            <Border CornerRadius="0 30 0 0" Background="{StaticResource PrimaryHuePrincipal}">
+                <Grid >
+                    <Label 
                 HorizontalAlignment="Center"
                 Content="ACCIDENTES"
                 FontSize="22"
                 FontWeight="Bold"
                 Foreground="White"/>
-        </Grid>
-        <Grid Grid.Row="1">
-            <StackPanel Orientation="Horizontal" Margin="30 20 10 0">
+                </Grid>
+            </Border>
+            
+            <Grid Grid.Row="1">
+                <StackPanel Orientation="Horizontal" Margin="30 20 10 0">
 
-                <Border Background="White" CornerRadius="10" Width="280" HorizontalAlignment="Left" BorderBrush="LightGray" BorderThickness="1 1 2 4">
-                    <TextBox Name="tbBuscar"
+                    <Border Background="White" CornerRadius="10" Width="280" HorizontalAlignment="Left" BorderBrush="LightGray" BorderThickness="1 1 2 4">
+                        <TextBox Name="tbBuscar"
                              Height="20"
                              BorderThickness="0"
                              Margin="6" 
                              Width="230"
                              FontWeight="Bold" 
                              FontSize="16"/>
-                </Border>
-                <Button
+                    </Border>
+                    <Button
                     Name="btnBuscar"
                     Style="{StaticResource RoundedButtonBlue}"
                     Content="Buscar"
@@ -42,10 +46,10 @@
                     Click="btnBuscar_Click"
                     VerticalAlignment="Bottom"
                     Height="40"/>
-            </StackPanel>
-        </Grid>
-        <Grid  Grid.Row="2" Margin="20 30">
-            <DataGrid Name ="empleado" 
+                </StackPanel>
+            </Grid>
+            <Grid  Grid.Row="2" Margin="20 30">
+                <DataGrid Name ="empleado" 
                       IsReadOnly="True"
                       AutoGenerateColumns="False"
                       CanUserResizeRows="False"
@@ -55,23 +59,25 @@
                       ColumnHeaderStyle="{StaticResource ColumnHeaderStyle1}"
                       Foreground="{StaticResource PrimaryText}"
                       ColumnWidth="*">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Curp" Binding="{Binding curp}" />
-                    <DataGridTextColumn Header="Fecha de Accidente" Binding="{Binding fecha_accidente}" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
-        <Grid Grid.Row="3">
-            <StackPanel Margin="30 20" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                <Button Name="btnAddAccident" 
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Curp" Binding="{Binding curp}" />
+                        <DataGridTextColumn Header="Fecha de Accidente" Binding="{Binding fecha_accidente}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Grid Grid.Row="3">
+                <StackPanel Margin="30 20" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                    <Button Name="btnAddAccident" 
                     Style="{StaticResource RoundedButtonGreen}"
                     Content="Agregar Empleado" 
                     HorizontalAlignment="Left" 
                     Height="50" 
                     Padding="10 0" 
                     Click="btnAddAccident_Click"/>
-            </StackPanel>
+                </StackPanel>
 
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
+    
 </UserControl>

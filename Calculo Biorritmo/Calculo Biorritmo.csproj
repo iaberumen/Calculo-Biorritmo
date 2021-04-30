@@ -144,6 +144,9 @@
     <Compile Include="Front\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Loading\LoadingView.xaml.cs">
+      <DependentUpon>LoadingView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202104290953161_Days living change.cs" />
     <Compile Include="Migrations\202104290953161_Days living change.designer.cs">
       <DependentUpon>202104290953161_Days living change.cs</DependentUpon>
@@ -180,6 +183,10 @@
     <Compile Include="Utils\Data\DataCalc.cs" />
     <Compile Include="Utils\tools.cs" />
     <Compile Include="ViewModel\EmployeesVM.cs" />
+    <Page Include="Loading\LoadingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -258,13 +265,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\BIO-RITMO.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Images\Stats.png" />
     <Resource Include="Resources\Images\userFriends.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\BIO-RITMO.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

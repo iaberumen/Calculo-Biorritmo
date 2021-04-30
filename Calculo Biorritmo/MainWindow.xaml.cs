@@ -26,6 +26,7 @@ using Calculo_Biorritmo.Connection;
 using System.Data.Entity.Infrastructure;
 using Calculo_Biorritmo.Data;
 using System.Data.Entity.Migrations;
+using Calculo_Biorritmo.Loading;
 
 namespace Calculo_Biorritmo
 {
@@ -36,9 +37,15 @@ namespace Calculo_Biorritmo
     {
         public MainWindow()
         {
-            ApplyMigrations();
+            checkFiles();
             InitializeComponent();
             initData();
+        }
+
+        private void checkFiles()
+        {
+            LoadingView load = new LoadingView();
+            load.ShowDialog();
         }
 
         private void initData()
@@ -92,24 +99,7 @@ namespace Calculo_Biorritmo
             Accident.BorderBrush = Brushes.Transparent;
         }
 
-        private void ApplyMigrations()
-        {
-            var dbInfo = new DbConnectionInfo(ConfigurationManager.ConnectionStrings["BiorytmDb"].ToString(), "System.Data.SqlClient");
-            var config = new Calculo_Biorritmo.Migrations.Configuration();
-            config.MigrationsAssembly = typeof(EmployeeEntity).Assembly;
-            config.MigrationsNamespace = "AlcyonPos.Migrations";
-            config.ContextKey = "AlcyonPos.Migrations.Configuration";
-            config.TargetDatabase = dbInfo;
-
-            var migrator = new DbMigrator(config);
-            migrator.Configuration.TargetDatabase = dbInfo;
-            var migrations = migrator.GetPendingMigrations();
-
-            if (!migrations.Any())
-                return;
-
-            migrator.Update();
-        }
+        
 
 
     }
