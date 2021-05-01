@@ -33,7 +33,7 @@
                         <Label Content="Accidentes"/>
 
                     </StackPanel>
-                    <StackPanel>
+                    <StackPanel Grid.Column="1">
                         <Label Name="lblCurp"/>
                         <Label Name="lblFechaNacimiento"/>
                         <Label Name="lblAccidentes"/>
