@@ -15,14 +15,14 @@ namespace Calculo_Biorritmo.Extensions.ContextExtensions
             return employees.Count();
         }
 
-        public static int totalAccidents(this DbSet<employee> employees)
+        public static int totalAccidents(this DbSet<accident> accidents)
         {
-            return employees.Where(x => x.fecha_accidente != null).Count();
+            return accidents.Where(x => x.fecha_accidente != null).Count();
         }
 
-        public static int totalAccidentsByCurp(this DbSet<employee> employees, string curp)
+        public static int totalAccidentsByCurp(this DbSet<accident> accidents, string curp)
         {
-            return employees.Where(x => x.curp == curp).Count();
+            return accidents.Where(x => x.curp == curp).Count();
         }
     }
 }

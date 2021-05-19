@@ -8,7 +8,8 @@
         WindowStyle="None"
         Background="{x:Null}"
         AllowsTransparency="True"
-        Title="addAccident" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="addAccident" Height="400" Width="600">
     <Border Background="White" CornerRadius="30">
         <Grid >
             <Grid.RowDefinitions>

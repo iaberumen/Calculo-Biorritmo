@@ -30,7 +30,7 @@ namespace Calculo_Biorritmo.Screens.Calculate
         EmployeesVM vm = new EmployeesVM();
         private IMediator _mediator;
         private int dias;
-        private string _fechaNacimiento;
+        private DateTime _fechaNacimiento;
         public CalculateView()
         {
             InitializeComponent();
@@ -67,12 +67,11 @@ namespace Calculo_Biorritmo.Screens.Calculate
             }
 
             using (var ctx = new EmployeeEntity())
-                tbAccidentes.Text = ctx.employees.totalAccidentsByCurp(tbCurp.Text).ToString();
-
-
-            tbDiasVividos.Text = dias.ToString();
-            _fechaNacimiento = response.data.Select(x => x.fecha_nacimiento).First().ToString();
-            tbFechaNacimiento.Text = _fechaNacimiento;
+                tbAccidentes.Text = ctx.accidents.totalAccidentsByCurp(tbCurp.Text).ToString();
+            
+            _fechaNacimiento = response.data.Select(x => x.fecha_nacimiento).First();
+            tbDiasVividos.Text = Utils.Data.DataCalc.daysLived(_fechaNacimiento).ToString();
+            tbFechaNacimiento.Text = _fechaNacimiento.ToString();
             btnCalculate.IsEnabled = true;
         }
 
@@ -93,7 +92,7 @@ namespace Calculo_Biorritmo.Screens.Calculate
             var biorritmoIntelectual = CalcularBiorritmo(dias, 33);
             var biorritmoIntuicional = CalcularBiorritmo(dias, 38);
 
-            var results = new Results(tbAccidentes.Text,_fechaNacimiento,tbCurp.Text,biorritmoFisico,biorritmoEmocional,biorritmoIntelectual,biorritmoIntuicional);
+            var results = new Results(tbAccidentes.Text,_fechaNacimiento.ToString(),tbCurp.Text,biorritmoFisico,biorritmoEmocional,biorritmoIntelectual,biorritmoIntuicional);
             results.ShowDialog(); 
         }
 

@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Calculo_Biorritmo.ViewModel
 {
-    class EmployeesVM
+    class AccidentsVM
     {
         public int id { get; set; }
         public string curp { get; set; }
-        public DateTime fecha_nacimiento { get; set; }
         public DateTime fecha_accidente { get; set; }
-        public int dias_vividos { get; set; }
-        
+        public double residuo_fisico { get; set; }
+        public double residuo_emocional { get; set; }
+        public double residuo_intelectual { get; set; }
+        public double residuo_intuicional { get; set; }
     }
 }

@@ -49,9 +49,12 @@ namespace Calculo_Biorritmo.Screens.Employees
 
         private async void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            if(vm.curp.Length != 15)
+                MessageBox.Show("El CURP debe ser a 15 digitos");
+
             if(tbFechaNacimiento.SelectedDate == null)
             {
-                MessageBox.Show("La fecha de nacimiento no puede ser nula");
+                MessageBox.Show("La fecha de nacimiento no puede ser vacia");
                 return;
             }
 

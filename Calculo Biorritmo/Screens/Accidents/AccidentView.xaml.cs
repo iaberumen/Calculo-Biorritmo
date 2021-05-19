@@ -44,12 +44,11 @@ namespace Calculo_Biorritmo.Screens.Accidents
                 var response = await _mediator.Send(new GetAccidentDataGridCommand()
                 {
                     curp = tbBuscar.Text,
-
                 });
 
                 empleado.ItemsSource = response.data;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Ha ocurrido un error");
             }

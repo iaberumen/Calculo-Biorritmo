@@ -69,7 +69,7 @@
                 <StackPanel Margin="30 20" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                     <Button Name="btnAddAccident" 
                     Style="{StaticResource RoundedButtonGreen}"
-                    Content="Agregar Empleado" 
+                    Content="Registrar accidente" 
                     HorizontalAlignment="Left" 
                     Height="50" 
                     Padding="10 0" 

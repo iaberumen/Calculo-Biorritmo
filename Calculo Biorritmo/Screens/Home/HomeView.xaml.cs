@@ -36,10 +36,14 @@ namespace Calculo_Biorritmo.Screens.Home
             using (var ctx = new EmployeeEntity())
                 registers = ctx.employees.totalRegisters();
             using (var ctx = new EmployeeEntity())
-                accidents = ctx.employees.totalAccidents();
+                accidents = ctx.accidents.totalAccidents();
 
             lbAccidentNum.Content = accidents.ToString();
             lbEmployeeNum.Content = registers.ToString();
+
+            var totalriskEmployees = empleado.Items.Count;
+
+            lbltotalRiskEmployees.Content = totalriskEmployees;
         }
     }
 }

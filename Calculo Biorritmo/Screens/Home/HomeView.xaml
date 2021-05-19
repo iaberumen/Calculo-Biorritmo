@@ -153,6 +153,7 @@
                         <Label 
                        Content="Total: "/>
                         <Label 
+                        Name="lbltotalRiskEmployees"
                         Content="0"/>
                     </StackPanel>
 
