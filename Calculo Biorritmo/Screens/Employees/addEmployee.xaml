@@ -42,7 +42,7 @@
                         <Label Style="{StaticResource TitleInformation}"  >CURP*</Label>
                         <Border Background="White" CornerRadius="10" Width="280" HorizontalAlignment="Left" BorderBrush="LightGray" BorderThickness="1 1 2 4">
                             <TextBox Name="tbId"
-                             MaxLength="10" 
+                             MaxLength="15" 
                              Height="20"
                              BorderThickness="0"
                              Margin="6" 

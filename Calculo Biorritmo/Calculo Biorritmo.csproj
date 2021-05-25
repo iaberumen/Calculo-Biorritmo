@@ -166,6 +166,10 @@
     <Compile Include="Migrations\202105192006185_Correccion tipo de dato.designer.cs">
       <DependentUpon>202105192006185_Correccion tipo de dato.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105230223524_correccion.cs" />
+    <Compile Include="Migrations\202105230223524_correccion.designer.cs">
+      <DependentUpon>202105230223524_correccion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\accident.cs" />
     <Compile Include="Screens\Accidents\addAccident.xaml.cs">
       <DependentUpon>addAccident.xaml</DependentUpon>
@@ -276,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105192006185_Correccion tipo de dato.resx">
       <DependentUpon>202105192006185_Correccion tipo de dato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105230223524_correccion.resx">
+      <DependentUpon>202105230223524_correccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

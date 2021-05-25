@@ -35,7 +35,7 @@ namespace Calculo_Biorritmo.ApplicationLayer.Queries.Accidents.Data
                              SELECT
                              curp,
                              fecha_accidente
-                             from Employee
+                             from accident
                                 where fecha_accidente != ''";
 
 

@@ -10,7 +10,7 @@ namespace Calculo_Biorritmo.Models
     {
         public int id { get; set; }
         public string curp { get; set; }
-        public DateTime? fecha_accidente { get; set; }
+        public DateTime fecha_accidente { get; set; }
         public double residuo_fisico { get; set; }
         public double residuo_emocional { get; set; }
         public double residuo_intelectual { get; set; }

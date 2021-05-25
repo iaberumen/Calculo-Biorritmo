@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Calculo_Biorritmo.ApplicationLayer.UseCases.Accident;
+using Calculo_Biorritmo.Data;
+using Calculo_Biorritmo.Models;
 using Calculo_Biorritmo.Utils.Data;
 using Calculo_Biorritmo.ViewModel;
 using MediatR;
@@ -32,17 +34,51 @@ namespace Calculo_Biorritmo.Screens.Accidents
             init();
         }
 
-        public void init()
+        public async void init()
         {
             gridForm.DataContext = vm;
             _mediator = DIContainer.container.Resolve<IMediator>();
+            //registerall();
         }
+
+        /*private async void registerall()
+        {
+            var empleado = new List<employee>();
+
+            using (var ctx = new EmployeeEntity())
+                empleado = ctx.employees.ToList();
+
+            foreach(var item in empleado)
+            {
+                int dias = DataCalc.daysLived(item.fecha_accidente ?? DateTime.Now);
+                var biorritmoFisico = CalcularBiorritmo(dias, 23);
+                var biorritmoEmocional = CalcularBiorritmo(dias, 28);
+                var biorritmoIntelectual = CalcularBiorritmo(dias, 33);
+                var biorritmoIntuicional = CalcularBiorritmo(dias, 38);
+
+                var createCommand = new RegisterAccidentCommand(item.curp, item.fecha_accidente, biorritmoFisico, biorritmoEmocional, biorritmoIntelectual, biorritmoIntuicional);
+                await _mediator.Send(createCommand);
+            }
+
+            
+        }*/
 
         private async void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             if (tbFechaAccidente.SelectedDate == null)
             {
                 MessageBox.Show("La fecha del accidente no puede ser vacia");
+                return;
+            }
+
+            employee empleado = new employee();
+
+            using (var ctx = new EmployeeEntity())
+                empleado = ctx.employees.Where(x => x.curp == vm.curp).FirstOrDefault();
+
+            if(empleado == null)
+            {
+                MessageBox.Show("No hay un empleado registrado con ese CURP");
                 return;
             }
 

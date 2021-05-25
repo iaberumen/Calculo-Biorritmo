@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Calculo_Biorritmo.ApplicationLayer.Queries.Accidents.Data;
+using Calculo_Biorritmo.Algorytms;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,8 @@ namespace Calculo_Biorritmo.Screens.Accidents
         {
             InitializeComponent();
             init();
+            AccidentAlgorytm.startAlgorytm();
+            AccidentAlgorytm.checkCritics();
         }
 
         public async void init()

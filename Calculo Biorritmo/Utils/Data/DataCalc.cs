@@ -33,11 +33,32 @@ namespace Calculo_Biorritmo.Utils.Data
             return days;
         }
 
+        public static int daysLived(DateTime birthDate,DateTime accidentDate)
+        {
+            int days = (accidentDate - birthDate).Days;
+            return days;
+        }
+
         public static DateTime getFirstDayMonth()
         {
             DateTime today = DateTime.Now;
             var firstDayOfMonth = new DateTime(today.Year, today.Month, 1);
             return firstDayOfMonth;
+        }
+
+        public static List<Double> CalculateBiorritm(int diasVividos, int teoria)
+        {
+            List<Double> values = new List<Double>();
+
+            for (int i = -1; i < 2; i++)
+            {
+                var dayValue = (2 * Math.PI * (diasVividos + i)) / teoria;
+                var sinValue = Math.Sin(dayValue);
+                var roundedValue = Math.Round(sinValue, 9, MidpointRounding.ToEven);
+                values.Add(roundedValue);
+            }
+
+            return values;
         }
     }
 }
