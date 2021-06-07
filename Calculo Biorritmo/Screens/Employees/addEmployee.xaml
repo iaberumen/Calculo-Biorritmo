@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         WindowStyle="None"
         Background="{x:Null}"
+        WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Title="Agregar Empleado" Height="450" Width="600">
     <Border Background="White" CornerRadius="30">
@@ -42,8 +43,9 @@
                         <Label Style="{StaticResource TitleInformation}"  >CURP*</Label>
                         <Border Background="White" CornerRadius="10" Width="280" HorizontalAlignment="Left" BorderBrush="LightGray" BorderThickness="1 1 2 4">
                             <TextBox Name="tbId"
-                             MaxLength="15" 
+                             MaxLength="18" 
                              Height="20"
+                             CharacterCasing="Upper"
                              BorderThickness="0"
                              Margin="6" 
                              Width="230"

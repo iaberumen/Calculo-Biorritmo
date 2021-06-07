@@ -28,9 +28,9 @@ namespace Calculo_Biorritmo.ApplicationLayer.Queries.Employees
             request.curp = request.curp?.Trim();
 
             var parameters = new List<SqlParameter>();
-            parameters.Add(new SqlParameter("@search_term", $"{request.curp}"));
+            parameters.Add(new SqlParameter("@search_term", $"%{request.curp}%"));
 
-            string addtitionalFilters = $" WHERE curp = @search_term";
+            string addtitionalFilters = $" WHERE curp LIKE @search_term";
 
             var query = $@"
                              SELECT

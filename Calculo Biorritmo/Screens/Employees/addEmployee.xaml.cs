@@ -20,6 +20,9 @@ using Calculo_Biorritmo.ApplicationLayer.UseCases.Employee.CreateEmployee;
 using Calculo_Biorritmo.ViewModel;
 using Calculo_Biorritmo.Utils.Data;
 using Autofac;
+using Calculo_Biorritmo.ApplicationLayer.UseCases.Accident;
+using Calculo_Biorritmo.Utils.Validators;
+using Calculo_Biorritmo.ApplicationLayer.Constants;
 
 namespace Calculo_Biorritmo.Screens.Employees
 {
@@ -49,8 +52,17 @@ namespace Calculo_Biorritmo.Screens.Employees
 
         private async void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if(vm.curp.Length != 15)
-                MessageBox.Show("El CURP debe ser a 15 digitos");
+            if(vm.curp.Length != 18)
+            {
+                MessageBox.Show("El CURP debe ser a 18 digitos");
+                return;
+            }
+
+            if (!InputValidators.validateCURP(vm.curp))
+            {
+                MessageBox.Show("Ingresa un RFC valido");
+                return;
+            }
 
             if(tbFechaNacimiento.SelectedDate == null)
             {
@@ -61,6 +73,19 @@ namespace Calculo_Biorritmo.Screens.Employees
             vm.fecha_nacimiento = tbFechaNacimiento.SelectedDate ?? DateTime.Now;
             var createCommand = new CreateEmployeeCommand(vm.curp, vm.fecha_nacimiento, tbFechaAccidente.SelectedDate);
             await _mediator.Send(createCommand);
+            if(tbFechaAccidente.SelectedDate != null)
+            {
+                int dias = DataCalc.daysLived(vm.fecha_accidente);
+                var biorritmoFisico = CalcularBiorritmo(dias, BiorytmDays.biorritmo_fisico);
+                var biorritmoEmocional = CalcularBiorritmo(dias, BiorytmDays.biorritmo_emocional);
+                var biorritmoIntelectual = CalcularBiorritmo(dias, BiorytmDays.biorritmo_intelectual);
+                var biorritmoIntuicional = CalcularBiorritmo(dias, BiorytmDays.biorritmo_intuicional);
+
+                var registerAccident = new RegisterAccidentCommand(vm.curp, vm.fecha_accidente, biorritmoFisico, biorritmoEmocional, biorritmoIntelectual, biorritmoIntuicional);
+                await _mediator.Send(registerAccident);
+            }
+            var response = $"{vm.curp} registrado con exito";
+            MessageBox.Show(response);
             Close();
         }
 
@@ -77,6 +102,14 @@ namespace Calculo_Biorritmo.Screens.Employees
         private void tbRfc_KeyDown(object sender, KeyEventArgs e)
         {
 
+        }
+
+        public Double CalcularBiorritmo(int diasVividos, int teoria)
+        {
+            var dayValue = (2 * Math.PI * (diasVividos)) / teoria;
+            var sinValue = Math.Sin(dayValue);
+            var roundedValue = Math.Round(sinValue, 9, MidpointRounding.ToEven);
+            return roundedValue;
         }
     }
 }

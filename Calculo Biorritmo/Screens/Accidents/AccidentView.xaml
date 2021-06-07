@@ -32,6 +32,7 @@
                         <TextBox Name="tbBuscar"
                              Height="20"
                              BorderThickness="0"
+                             CharacterCasing="Upper"
                              Margin="6" 
                              Width="230"
                              FontWeight="Bold" 
@@ -66,7 +67,15 @@
                 </DataGrid>
             </Grid>
             <Grid Grid.Row="3">
-                <StackPanel Margin="30 20" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <StackPanel Margin="30 20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
+                    <Button Name="btnCheckNeuralInfo" 
+                    Style="{StaticResource RoundedButtonGray}"
+                    Content="Revisar datos" 
+                    HorizontalAlignment="Left" 
+                    Height="50" 
+                    Margin="10 0"
+                    Padding="10 0" 
+                    Click="btnCheckNeuralInfo_Click"/>
                     <Button Name="btnAddAccident" 
                     Style="{StaticResource RoundedButtonGreen}"
                     Content="Registrar accidente" 

@@ -174,6 +174,9 @@
     <Compile Include="Screens\Accidents\addAccident.xaml.cs">
       <DependentUpon>addAccident.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Screens\Accidents\AlgorytmInfo.xaml.cs">
+      <DependentUpon>AlgorytmInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Connection.cs" />
     <Compile Include="Interfaces\ISystemView.cs" />
     <Compile Include="Migrations\202104222223127_Init.cs" />
@@ -202,6 +205,7 @@
     </Compile>
     <Compile Include="Utils\Data\DataCalc.cs" />
     <Compile Include="Utils\tools.cs" />
+    <Compile Include="Utils\Validators\InputValidators.cs" />
     <Compile Include="ViewModel\AccidentsVM.cs" />
     <Compile Include="ViewModel\EmployeesVM.cs" />
     <Page Include="Loading\LoadingView.xaml">
@@ -225,6 +229,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Screens\Accidents\addAccident.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Accidents\AlgorytmInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

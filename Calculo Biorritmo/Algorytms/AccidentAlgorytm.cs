@@ -13,7 +13,7 @@ namespace Calculo_Biorritmo.Algorytms
 {
     class AccidentAlgorytm
     {
-        public static void startAlgorytm()
+        /*public static List<Double> startAlgorytm()
         {
             var accidentes =  new List<accident>();
             using (var ctx = new EmployeeEntity())
@@ -21,7 +21,7 @@ namespace Calculo_Biorritmo.Algorytms
                     accidentes.Add(item);
 
             if (!accidentes.Any())
-                return;
+                return null;
 
             var RegistrosFisicos = new List<Double>();
             var RegistrosEmocionales = new List<Double>();
@@ -44,14 +44,54 @@ namespace Calculo_Biorritmo.Algorytms
             var totalIntuicional = RegistrosIntuicionales.Sum();
             var promedioIntuicional = totalIntuicional / RegistrosIntuicionales.Count;
 
-            MessageBox.Show(promedioFisico.ToString());
-            MessageBox.Show(promedioEmocional.ToString());
-            MessageBox.Show(promedioIntelectual.ToString());
-            MessageBox.Show(promedioIntuicional.ToString());
+            var promedios = new List<Double>();
+            promedios.Add(promedioFisico);
+            promedios.Add(promedioEmocional);
+            promedios.Add(promedioIntelectual);
+            promedios.Add(promedioIntuicional);
+
+            return promedios;
+
+        }*/
+
+        public static List<Double> startAlgorytm()
+        {
+            var accidentes =  new List<accident>();
+            using (var ctx = new EmployeeEntity())
+                foreach (var item in ctx.accidents.ToList())
+                    accidentes.Add(item);
+
+            if (!accidentes.Any())
+                return null;
+
+            var RegistrosFisicos = new List<Double>();
+            var RegistrosEmocionales = new List<Double>();
+            var RegistrosIntuicionales = new List<Double>();
+            var RegistrosIntelectuales = new List<Double>();
+
+            foreach (var biorritmo in accidentes){
+                RegistrosFisicos.Add(biorritmo.residuo_fisico);
+                RegistrosEmocionales.Add(biorritmo.residuo_emocional);
+                RegistrosIntelectuales.Add(biorritmo.residuo_intelectual);
+                RegistrosIntuicionales.Add(biorritmo.residuo_intuicional);
+            }
+
+            var modaFisico = RegistrosFisicos.GroupBy(x => x).Where(g => g.Count() > 1).OrderByDescending(x => x.Count()).Select(x => x.Key).FirstOrDefault();
+            var modaEmocional = RegistrosEmocionales.GroupBy(x => x).Where(g => g.Count() > 1).OrderByDescending(x => x.Count()).Select(x => x.Key).FirstOrDefault();
+            var modaIntelectual = RegistrosIntelectuales.GroupBy(x => x).Where(g => g.Count() > 1).OrderByDescending(x => x.Count()).Select(x => x.Key).FirstOrDefault();
+            var modaIntuicional = RegistrosIntuicionales.GroupBy(x => x).Where(g => g.Count() > 1).OrderByDescending(x => x.Count()).Select(x => x.Key).FirstOrDefault();
+
+            var moda = new List<double>();
+            moda.Add(modaFisico);
+            moda.Add(modaEmocional);
+            moda.Add(modaIntelectual);
+            moda.Add(modaIntuicional);
+
+            return moda;
 
         }
 
-        public static void checkCritics()
+        public static List<int> checkCritics()
         {
             var accidentes = new List<accident>();
             using (var ctx = new EmployeeEntity())
@@ -59,9 +99,7 @@ namespace Calculo_Biorritmo.Algorytms
                     accidentes.Add(item);
 
             if (!accidentes.Any())
-                return;
-
-            MessageBox.Show(accidentes.Count.ToString());
+                return new List<int>();
 
             var accidentOnCritic = new List<accident>();
             var accidentOnPerfectCritics = new List<accident>();
@@ -105,24 +143,57 @@ namespace Calculo_Biorritmo.Algorytms
                 }
                     
             }
-            MessageBox.Show(ocurredOnFisic.Count.ToString());
-            MessageBox.Show(ocurredOnEmotional.Count.ToString());
-            MessageBox.Show(ocurredOnIntuitional.Count.ToString());
-            MessageBox.Show(ocurredOnIntelectual.Count.ToString());
-            MessageBox.Show(accidentOnPerfectCritics.Count.ToString());
-            MessageBox.Show(accidentOnCritic.Count.ToString());
 
+            var critics = new List<int>();
 
+            critics.Add(accidentes.Count);
+            critics.Add(ocurredOnFisic.Count);
+            critics.Add(ocurredOnEmotional.Count);
+            critics.Add(ocurredOnIntuitional.Count);
+            critics.Add(ocurredOnIntelectual.Count);
+            critics.Add(accidentOnPerfectCritics.Count);
+            critics.Add(accidentOnCritic.Count);
+
+            return critics;
         }
+
+        public static List<Double> CalculateErrorMargin()
+        {
+
+            var promedios = startAlgorytm();
+            if (!promedios.Any())
+                return null;
+
+            var margins = new List<Double>();
+            foreach(var item in promedios)
+            {
+                double over;
+                double under;
+                if(item >= 0)
+                {
+                    over = item + .2;
+                    under = item - .2;
+                }
+                else
+                {
+                    over = item - .2;
+                    under = item + .2;
+                }
+                margins.Add(over);
+                margins.Add(under);
+            }
+            return margins;
+        }
+
 
         public static double? calculateCritics(List<Double> List)
         {
             if (List[1] == 0)
                 return List[1];
-            /*else if (List[0] == 0)
-                return List[1];
-            else if (List[2] == 0)
-                return List[1];
+            //else if (List[0] == 0)
+            //    return List[1];
+            //else if (List[2] == 0)
+            //    return List[1];
             else if (List[0] > 0 && List[1] < 0)
                 return List[1];
             else if (List[0] < 0 && List[1] > 0)
@@ -130,7 +201,7 @@ namespace Calculo_Biorritmo.Algorytms
             else if (List[1] < 0 && List[2] > 0)
                 return List[1];
             else if (List[1] > 0 && List[2] < 0)
-                return List[1];*/
+                return List[1];
             return null;
         }
     }

@@ -34,6 +34,7 @@
                         <TextBox Name="tbBuscar"
                              Height="20"
                              BorderThickness="0"
+                             CharacterCasing="Upper"
                              Margin="6" 
                              Width="230"
                              FontWeight="Bold" 

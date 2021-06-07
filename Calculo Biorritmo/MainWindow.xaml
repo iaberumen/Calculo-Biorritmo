@@ -177,6 +177,12 @@
             <Grid Name="gridView" Grid.Column="1">
 
             </Grid>
+            <Grid Grid.RowSpan="2" Grid.ColumnSpan="2" Name="GridBlock" Visibility="Collapsed" >
+                <Grid.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.6"/>
+                </Grid.Background>
+
+            </Grid>
         </Grid>
     </Border>
     

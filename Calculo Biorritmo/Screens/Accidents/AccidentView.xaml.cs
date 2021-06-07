@@ -73,5 +73,15 @@ namespace Calculo_Biorritmo.Screens.Accidents
         {
             await updateTable();
         }
+
+        private void btnCheckNeuralInfo_Click(object sender, RoutedEventArgs e)
+        {
+            if(empleado.Items.Count == 0)
+            {
+                MessageBox.Show("El algoritmo no tiene informacion para procesar");
+            }
+            AlgorytmInfo algorytmInfo = new AlgorytmInfo();
+            algorytmInfo.Show();
+        }
     }
 }

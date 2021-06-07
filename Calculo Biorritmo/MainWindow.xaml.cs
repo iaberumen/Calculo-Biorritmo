@@ -40,6 +40,26 @@ namespace Calculo_Biorritmo
             checkFiles();
             InitializeComponent();
             initData();
+            LoadEvents();
+        }
+
+        private void LoadEvents()
+        {
+            this.Deactivated += new EventHandler(LoadBlur);
+            this.Activated += new EventHandler(UnloadBlur);
+        }
+
+        private void UnloadBlur(object sender, EventArgs e)
+        {
+            GridBlock.Visibility = Visibility.Collapsed;
+        }
+
+        private void LoadBlur(object sender, EventArgs e)
+        {
+            if (!this.IsFocused)
+            {
+                GridBlock.Visibility = Visibility.Visible;
+            }
         }
 
         private void checkFiles()

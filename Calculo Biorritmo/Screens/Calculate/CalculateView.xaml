@@ -45,7 +45,7 @@
                             <Label Style="{StaticResource TitleInformation}"  Margin="20,0">CURP</Label>
                             <Border Background="White" CornerRadius="10" Width="280" BorderBrush="LightGray" BorderThickness="1 1 2 4">
                                 <TextBox Name="tbCurp" 
-                             MaxLength="10" 
+                             MaxLength="18" 
                              Height="20"
                              BorderThickness="0"
                              Margin="6" 

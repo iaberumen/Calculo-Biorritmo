@@ -30,7 +30,16 @@
             <SolidColorBrush x:Key="SecondaryHueBannerBrush" Color="#71D1E3" ></SolidColorBrush>
             <SolidColorBrush x:Key="SecondaryHueDarkBrush" Color="#005A1E"></SolidColorBrush>
             <SolidColorBrush x:Key="SecondaryHueDarkForegroundBrush" Color="#00B23C" Opacity="0.83" ></SolidColorBrush>
-            
+
+            <SolidColorBrush x:Key="Red" Color="#F26D7C" ></SolidColorBrush>
+
+            <SolidColorBrush x:Key="Yellow" Color="#FACF5A" ></SolidColorBrush>
+            <SolidColorBrush x:Key="Blue" Color="#71D1E3" ></SolidColorBrush>
+            <SolidColorBrush x:Key="Green" Color="#54DEAD" ></SolidColorBrush>
+            <SolidColorBrush x:Key="GrayLigth" Color="#B4B4B4" ></SolidColorBrush>
+            <SolidColorBrush x:Key="GrayDark" Color="#505050" ></SolidColorBrush>
+            <SolidColorBrush x:Key="BlueLigth" Color="#71D1E3" ></SolidColorBrush>
+            <SolidColorBrush x:Key="DarkBlue" Color="#0D859C" ></SolidColorBrush>
 
             <SolidColorBrush x:Key="Deactivated" Color="Gray" Opacity="0.83"></SolidColorBrush>
             <Style TargetType="Button" x:Key="RoundedButton">
@@ -199,8 +208,36 @@
                 <Setter Property="Foreground" Value="{StaticResource PrimaryText}" />
                 <Setter Property="FontWeight" Value="Bold" />
             </Style>
-            
-            
+
+            <CornerRadius x:Key="BorderRadius"/>
+            <Style TargetType="Border" x:Key="BorderTitleModal">
+                <Setter Property="CornerRadius" Value="32,32,0,0"/>
+                <Setter Property="Background" Value="{StaticResource SecondaryHueBannerBrush}"/>
+                <Setter Property="Opacity" Value="1"/>
+            </Style>
+            <Style TargetType="Label" x:Key="LabelTitleModal" >
+                <Setter Property="FontFamily" Value="{StaticResource FontPrimary}" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="FontSize" Value="40" />
+                <Setter Property="Foreground" Value="{StaticResource PrimaryHueRealWhite}" />
+            </Style>
+            <Style TargetType="Border" x:Key="BorderSquare">
+                <Setter Property="CornerRadius" Value="32,32,0,0"/>
+                <Setter Property="BorderBrush" Value="{StaticResource GrayLigth}"/>
+                <Setter Property="BorderThickness" Value="1,1,1,1"/>
+            </Style>
+            <Style TargetType="Border" x:Key="BorderTitleSquare">
+                <Setter Property="CornerRadius" Value="32,32,0,0"/>
+                <Setter Property="Background" Value="{StaticResource GrayLigth}"/>
+                <Setter Property="Opacity" Value="1"/>
+            </Style>
+            <Style TargetType="Label" x:Key="LabelTitleSquare" >
+                <Setter Property="FontFamily" Value="{StaticResource FontPrimary}" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="FontSize" Value="30" />
+                <Setter Property="Foreground" Value="{StaticResource PrimaryHueRealWhite}" />
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
