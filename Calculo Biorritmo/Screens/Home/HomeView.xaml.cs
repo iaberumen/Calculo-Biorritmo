@@ -40,7 +40,6 @@ namespace Calculo_Biorritmo.Screens.Home
             var accidents = new List<AccidentsVM>();
             var accidentes = new List<accident>();
             var employees = new List<employee>();
-            List<double> margins = AccidentAlgorytm.CalculateErrorMargin();
 
             using (var ctx = new EmployeeEntity())
                 employees = ctx.employees.ToList();
@@ -63,37 +62,11 @@ namespace Calculo_Biorritmo.Screens.Home
                 i++;
             }
 
-            var overFisic = margins[0];
-            var underFisic = margins[1];
-            var overEmotional = margins[2];
-            var underEmotional = margins[3];
-            var overIntelectual = margins[4];
-            var underIntelectual = margins[5];
-            var overIntuitional = margins[6];
-            var underIntuitional = margins[7];
 
             using (var ctx = new EmployeeEntity())
                 totalRegisters = ctx.employees.totalRegisters();
             using (var ctx = new EmployeeEntity())
                 totalAccidents = ctx.accidents.totalAccidents();
-            accidents = accidents.Where(x => x.residuo_fisico <= overFisic &&
-                                                x.residuo_fisico >= underFisic &&
-                                                x.residuo_emocional <= overEmotional &&
-                                                x.residuo_emocional >= underEmotional &&
-                                                x.residuo_intelectual <= overIntelectual &&
-                                                x.residuo_intelectual >= underIntelectual &&
-                                                x.residuo_intuicional <= overIntuitional &&
-                                                x.residuo_intuicional >= underIntuitional).ToList();
-
-            using (var ctx = new EmployeeEntity())
-                accidentes = ctx.accidents.Where(x => x.residuo_fisico <= overFisic &&
-                                                x.residuo_fisico >= underFisic &&
-                                                x.residuo_emocional <= overEmotional &&
-                                                x.residuo_emocional >= underEmotional &&
-                                                x.residuo_intelectual <= overIntelectual &&
-                                                x.residuo_intelectual >= underIntelectual &&
-                                                x.residuo_intuicional <= overIntuitional &&
-                                                x.residuo_intuicional >= underIntuitional).ToList();
 
             lbAccidentNum.Content = totalAccidents.ToString();
             lbEmployeeNum.Content = totalRegisters.ToString();

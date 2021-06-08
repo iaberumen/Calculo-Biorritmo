@@ -79,6 +79,7 @@ namespace Calculo_Biorritmo.Screens.Accidents
             if(empleado.Items.Count == 0)
             {
                 MessageBox.Show("El algoritmo no tiene informacion para procesar");
+                return;
             }
             AlgorytmInfo algorytmInfo = new AlgorytmInfo();
             algorytmInfo.Show();
