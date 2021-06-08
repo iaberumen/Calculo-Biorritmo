@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Calculo_Biorritmo.Utils.Validators;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -65,11 +66,37 @@ namespace Calculo_Biorritmo.Screens.Accidents
 
         private async void btnRegister_Click(object sender, RoutedEventArgs e)
         {
+            bool errors = false;
+            if (string.IsNullOrEmpty(vm.curp))
+            {
+                lblErrorCurp.Content = "El RFC no puede ser vacio";
+                lblErrorCurp.Visibility = Visibility.Visible;
+                errors = true;
+            }
+
+            if (vm.curp.Length != 18)
+            {
+                lblErrorCurp.Content = "El RFC debe ser a 18 digitos";
+                lblErrorCurp.Visibility = Visibility.Visible;
+                errors = true;
+            }
+
             if (tbFechaAccidente.SelectedDate == null)
             {
-                MessageBox.Show("La fecha del accidente no puede ser vacia");
-                return;
+                lblErrorDate.Content = "La fecha del accidente no puede ser vacia";
+                lblErrorDate.Visibility = Visibility.Visible;
+                errors = true;
             }
+
+            if (!InputValidators.validateCURP(vm.curp))
+            {
+                lblErrorCurp.Content = "Ingresa un RFC valido";
+                lblErrorCurp.Visibility = Visibility.Visible;
+                errors = true;
+            }
+
+            if (errors)
+                return;
 
             employee empleado = new employee();
 
@@ -78,7 +105,8 @@ namespace Calculo_Biorritmo.Screens.Accidents
 
             if(empleado == null)
             {
-                MessageBox.Show("No hay un empleado registrado con ese CURP");
+                lblErrorCurp.Content = "No hay un empleado registrado con ese CURP";
+                lblErrorCurp.Visibility = Visibility.Visible;
                 return;
             }
 
@@ -88,8 +116,16 @@ namespace Calculo_Biorritmo.Screens.Accidents
             var biorritmoIntelectual = CalcularBiorritmo(dias, 33);
             var biorritmoIntuicional = CalcularBiorritmo(dias, 38);
 
-            var createCommand = new RegisterAccidentCommand(vm.curp,vm.fecha_accidente,biorritmoFisico,biorritmoEmocional,biorritmoIntelectual,biorritmoIntuicional);
-            await _mediator.Send(createCommand);
+            try
+            {
+                var createCommand = new RegisterAccidentCommand(vm.curp, vm.fecha_accidente, biorritmoFisico, biorritmoEmocional, biorritmoIntelectual, biorritmoIntuicional);
+                await _mediator.Send(createCommand);
+            }
+            catch
+            {
+                MessageBox.Show("Ha ocurrido un error al registrar el accidente");
+                return;
+            }
             Close();
         }
 
@@ -104,6 +140,18 @@ namespace Calculo_Biorritmo.Screens.Accidents
             var sinValue = Math.Sin(dayValue);
             var roundedValue = Math.Round(sinValue, 9, MidpointRounding.ToEven);
             return roundedValue;
+        }
+
+        private void tbId_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (lblErrorCurp.Visibility == Visibility.Visible)
+                lblErrorCurp.Visibility = Visibility.Hidden;
+        }
+
+        private void tbFechaAccidente_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lblErrorDate.Visibility == Visibility.Visible)
+                lblErrorDate.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -52,27 +52,38 @@ namespace Calculo_Biorritmo.Screens.Employees
 
         private async void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if(vm.curp.Length != 18)
+            if (string.IsNullOrEmpty(vm.curp))
             {
-                MessageBox.Show("El CURP debe ser a 18 digitos");
+                lblErrorCurp.Content = "El RFC no puede ser vacio";
+                lblErrorCurp.Visibility = Visibility.Visible;
+                return;
+            }
+
+            if (vm.curp.Length != 18)
+            {
+                lblErrorCurp.Content = "El RFC debe ser a 18 digitos";
+                lblErrorCurp.Visibility = Visibility.Visible;
                 return;
             }
 
             if (!InputValidators.validateCURP(vm.curp))
             {
-                MessageBox.Show("Ingresa un RFC valido");
+                lblErrorCurp.Content = "Ingresa un RFC valido";
+                lblErrorCurp.Visibility = Visibility.Visible;
                 return;
             }
 
-            if(tbFechaNacimiento.SelectedDate == null)
-            {
-                MessageBox.Show("La fecha de nacimiento no puede ser vacia");
-                return;
-            }
-
-            vm.fecha_nacimiento = tbFechaNacimiento.SelectedDate ?? DateTime.Now;
+            vm.fecha_nacimiento = DataCalc.getBirthDate(vm.curp);
             var createCommand = new CreateEmployeeCommand(vm.curp, vm.fecha_nacimiento, tbFechaAccidente.SelectedDate);
-            await _mediator.Send(createCommand);
+            try
+            {
+                await _mediator.Send(createCommand);
+            }
+            catch
+            {
+                MessageBox.Show("Ha ocurrido un error al registrar al empleado");
+                return;
+            }
             if(tbFechaAccidente.SelectedDate != null)
             {
                 int dias = DataCalc.daysLived(vm.fecha_accidente);
@@ -87,11 +98,6 @@ namespace Calculo_Biorritmo.Screens.Employees
             var response = $"{vm.curp} registrado con exito";
             MessageBox.Show(response);
             Close();
-        }
-
-        private void tbId_KeyDown(object sender, KeyEventArgs e)
-        {
-
         }
 
         private void tbNoReloj_KeyDown(object sender, KeyEventArgs e)
@@ -110,6 +116,12 @@ namespace Calculo_Biorritmo.Screens.Employees
             var sinValue = Math.Sin(dayValue);
             var roundedValue = Math.Round(sinValue, 9, MidpointRounding.ToEven);
             return roundedValue;
+        }
+
+        private void tbId_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (lblErrorCurp.Visibility == Visibility.Visible)
+                lblErrorCurp.Visibility = Visibility.Hidden;
         }
     }
 }

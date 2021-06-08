@@ -9,7 +9,7 @@
         Background="{x:Null}"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
-        Title="Agregar Empleado" Height="450" Width="600">
+        Title="Agregar Empleado" Height="360" Width="540">
     <Border Background="White" CornerRadius="30">
         <Grid >
             <Grid.RowDefinitions>
@@ -50,23 +50,18 @@
                              Margin="6" 
                              Width="230"
                              TextAlignment="Center" 
+                             TextChanged="tbId_TextChanged"
                              FontWeight="Bold" 
                              FontSize="16"
                                  Text="{Binding curp}"/>
                         </Border>
+                        <Label Name="lblErrorCurp" Height="25" Visibility="Hidden" Foreground="Red"/>
                     </StackPanel>
                     <!--<Label
                     Content="Nombre"
                     FontWeight="Bold"/>-->
 
-                    <Label Style="{StaticResource TitleInformation}" Margin="0 10 0 0" >Fecha de Nacimiento*</Label>
-                    <DatePicker
-                Name="tbFechaNacimiento"
-                Grid.Row="1"
-                Width="200"
-                HorizontalAlignment="Left"
-                KeyDown="tbNoReloj_KeyDown"/>
-                    <Label Style="{StaticResource TitleInformation}" Margin="0 10 0 0" >Fecha del accidente</Label>
+                    <Label Style="{StaticResource TitleInformation}" >Fecha del accidente*</Label>
                     <DatePicker
                 Name="tbFechaAccidente"
                 Grid.Row="1"

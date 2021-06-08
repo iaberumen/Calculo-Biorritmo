@@ -26,8 +26,8 @@
             </Border>
             
             <Grid Grid.Row="1">
+                <Label Content="CURP" FontWeight="Bold" Margin="35 0 0 0"/>
                 <StackPanel Orientation="Horizontal" Margin="30 20 10 0">
-
                     <Border Background="White" CornerRadius="10" Width="280" HorizontalAlignment="Left" BorderBrush="LightGray" BorderThickness="1 1 2 4">
                         <TextBox Name="tbBuscar"
                              Height="20"
