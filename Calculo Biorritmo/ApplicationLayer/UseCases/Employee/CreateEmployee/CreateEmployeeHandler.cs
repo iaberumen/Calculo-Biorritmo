@@ -28,7 +28,6 @@ namespace Calculo_Biorritmo.ApplicationLayer.UseCases.Employee.CreateEmployee
             employee.curp = request.curp;
             //int days = DataCalc.daysLived(request.fecha_nacimiento);
             //employee.dias_vividos = days;
-            employee.fecha_accidente = request.fecha_accidente;
             employee.fecha_nacimiento = request.fecha_nacimiento;
 
             using (var dbContextTransaction = _ctx.Database.BeginTransaction())

@@ -46,7 +46,7 @@ namespace Calculo_Biorritmo.Screens.Home
 
             int i = 0;
 
-            foreach(var employee in employees)
+            /*foreach(var employee in employees)
             {
                 var birthDate = DataCalc.getBirthDate(employee.curp);
                 var LivingDays = DataCalc.daysLived(birthDate);
@@ -61,7 +61,7 @@ namespace Calculo_Biorritmo.Screens.Home
 
                 i++;
             }
-
+            */
 
             using (var ctx = new EmployeeEntity())
                 totalRegisters = ctx.employees.totalRegisters();
@@ -71,7 +71,7 @@ namespace Calculo_Biorritmo.Screens.Home
             lbAccidentNum.Content = totalAccidents.ToString();
             lbEmployeeNum.Content = totalRegisters.ToString();
 
-            empleado.ItemsSource = accidents;
+            //empleado.ItemsSource = accidents;
 
             var totalriskEmployees = empleado.Items.Count;
 

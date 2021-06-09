@@ -150,25 +150,9 @@
     <Compile Include="Loading\LoadingView.xaml.cs">
       <DependentUpon>LoadingView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104290953161_Days living change.cs" />
-    <Compile Include="Migrations\202104290953161_Days living change.designer.cs">
-      <DependentUpon>202104290953161_Days living change.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105171448133_database_update.cs" />
-    <Compile Include="Migrations\202105171448133_database_update.designer.cs">
-      <DependentUpon>202105171448133_database_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105171513540_accidentsdb.cs" />
-    <Compile Include="Migrations\202105171513540_accidentsdb.designer.cs">
-      <DependentUpon>202105171513540_accidentsdb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105192006185_Correccion tipo de dato.cs" />
-    <Compile Include="Migrations\202105192006185_Correccion tipo de dato.designer.cs">
-      <DependentUpon>202105192006185_Correccion tipo de dato.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105230223524_correccion.cs" />
-    <Compile Include="Migrations\202105230223524_correccion.designer.cs">
-      <DependentUpon>202105230223524_correccion.cs</DependentUpon>
+    <Compile Include="Migrations\202106092054295_init.cs" />
+    <Compile Include="Migrations\202106092054295_init.designer.cs">
+      <DependentUpon>202106092054295_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\accident.cs" />
     <Compile Include="Screens\Accidents\addAccident.xaml.cs">
@@ -179,10 +163,6 @@
     </Compile>
     <Compile Include="Utils\Connection.cs" />
     <Compile Include="Interfaces\ISystemView.cs" />
-    <Compile Include="Migrations\202104222223127_Init.cs" />
-    <Compile Include="Migrations\202104222223127_Init.designer.cs">
-      <DependentUpon>202104222223127_Init.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\employee.cs" />
     <Compile Include="Screens\Accidents\AccidentView.xaml.cs">
@@ -274,23 +254,8 @@
     <EmbeddedResource Include="Front\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104222223127_Init.resx">
-      <DependentUpon>202104222223127_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104290953161_Days living change.resx">
-      <DependentUpon>202104290953161_Days living change.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105171448133_database_update.resx">
-      <DependentUpon>202105171448133_database_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105171513540_accidentsdb.resx">
-      <DependentUpon>202105171513540_accidentsdb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105192006185_Correccion tipo de dato.resx">
-      <DependentUpon>202105192006185_Correccion tipo de dato.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105230223524_correccion.resx">
-      <DependentUpon>202105230223524_correccion.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106092054295_init.resx">
+      <DependentUpon>202106092054295_init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

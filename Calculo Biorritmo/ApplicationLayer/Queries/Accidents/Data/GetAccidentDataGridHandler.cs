@@ -32,11 +32,8 @@ namespace Calculo_Biorritmo.ApplicationLayer.Queries.Accidents.Data
 
 
             var query = $@"
-                             SELECT
-                             curp,
-                             fecha_accidente
-                             from accident
-                                where fecha_accidente != ''";
+                             SELECT * 
+                             from accident";
 
 
             /*query += $@"    {additionalFilters}

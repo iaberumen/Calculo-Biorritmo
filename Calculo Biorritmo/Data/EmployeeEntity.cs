@@ -23,6 +23,9 @@ namespace Calculo_Biorritmo.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<employee>()
+                .HasIndex(e => e.curp)
+                .IsUnique();
         }
     }
 }

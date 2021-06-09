@@ -23,6 +23,7 @@ using Autofac;
 using Calculo_Biorritmo.ApplicationLayer.UseCases.Accident;
 using Calculo_Biorritmo.Utils.Validators;
 using Calculo_Biorritmo.ApplicationLayer.Constants;
+using Calculo_Biorritmo.Data;
 
 namespace Calculo_Biorritmo.Screens.Employees
 {
@@ -54,43 +55,66 @@ namespace Calculo_Biorritmo.Screens.Employees
         {
             if (string.IsNullOrEmpty(vm.curp))
             {
-                lblErrorCurp.Content = "El RFC no puede ser vacio";
+                lblErrorCurp.Content = "El CURP no puede ser vacio";
                 lblErrorCurp.Visibility = Visibility.Visible;
                 return;
             }
 
             if (vm.curp.Length != 18)
             {
-                lblErrorCurp.Content = "El RFC debe ser a 18 digitos";
+                lblErrorCurp.Content = "El CURP debe ser a 18 digitos";
                 lblErrorCurp.Visibility = Visibility.Visible;
                 return;
             }
 
             if (!InputValidators.validateCURP(vm.curp))
             {
-                lblErrorCurp.Content = "Ingresa un RFC valido";
+                lblErrorCurp.Content = "Ingresa un CURP valido";
                 lblErrorCurp.Visibility = Visibility.Visible;
                 return;
             }
 
+            using (var ctx = new EmployeeEntity())
+            {
+                var result = ctx.employees.Where(x => x.curp == vm.curp).Select(x => x.curp).FirstOrDefault();
+                if (result != null)
+                {
+                    lblErrorCurp.Content = "Ya existe un empleado registrado con ese CURP";
+                    lblErrorCurp.Visibility = Visibility.Visible;
+                    return;
+                }
+            }
+
             vm.fecha_nacimiento = DataCalc.getBirthDate(vm.curp);
+            DateTime fecha_nacimiento = DataCalc.getBirthDate(vm.curp);
+            int livedDays = DataCalc.daysLived(fecha_nacimiento);
+
+            if(livedDays < 0)
+            {
+                lblErrorCurp.Content = "Error: La edad maxima 100";
+                lblErrorCurp.Visibility = Visibility.Visible;
+                return;
+            }
+
             var createCommand = new CreateEmployeeCommand(vm.curp, vm.fecha_nacimiento, tbFechaAccidente.SelectedDate);
+
             try
             {
                 await _mediator.Send(createCommand);
             }
-            catch
+            catch(Exception)
             {
                 MessageBox.Show("Ha ocurrido un error al registrar al empleado");
                 return;
             }
+
             if(tbFechaAccidente.SelectedDate != null)
             {
-                int dias = DataCalc.daysLived(vm.fecha_accidente);
-                var biorritmoFisico = CalcularBiorritmo(dias, BiorytmDays.biorritmo_fisico);
-                var biorritmoEmocional = CalcularBiorritmo(dias, BiorytmDays.biorritmo_emocional);
-                var biorritmoIntelectual = CalcularBiorritmo(dias, BiorytmDays.biorritmo_intelectual);
-                var biorritmoIntuicional = CalcularBiorritmo(dias, BiorytmDays.biorritmo_intuicional);
+                vm.fecha_accidente = tbFechaAccidente.SelectedDate ?? DateTime.Now;
+                var biorritmoFisico = CalcularBiorritmo(livedDays, BiorytmDays.biorritmo_fisico);
+                var biorritmoEmocional = CalcularBiorritmo(livedDays, BiorytmDays.biorritmo_emocional);
+                var biorritmoIntelectual = CalcularBiorritmo(livedDays, BiorytmDays.biorritmo_intelectual);
+                var biorritmoIntuicional = CalcularBiorritmo(livedDays, BiorytmDays.biorritmo_intuicional);
 
                 var registerAccident = new RegisterAccidentCommand(vm.curp, vm.fecha_accidente, biorritmoFisico, biorritmoEmocional, biorritmoIntelectual, biorritmoIntuicional);
                 await _mediator.Send(registerAccident);

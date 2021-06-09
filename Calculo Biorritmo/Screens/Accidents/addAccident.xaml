@@ -42,7 +42,7 @@
                         <Label Style="{StaticResource TitleInformation}">CURP*</Label>
                         <Border Background="White" CornerRadius="10" Width="280" HorizontalAlignment="Left" BorderBrush="LightGray" BorderThickness="1 1 2 4">
                             <TextBox Name="tbId"
-                             MaxLength="10" 
+                             MaxLength="18" 
                              Height="20"
                              BorderThickness="0"
                              TextChanged="tbId_TextChanged"
@@ -66,7 +66,8 @@
                 Grid.Row="1"
                 Width="200"
                 SelectedDateChanged="tbFechaAccidente_SelectedDateChanged"
-                HorizontalAlignment="Left"/>
+                HorizontalAlignment="Left"
+                SelectedDate="{Binding fecha_accidente}"/>
                     <Label Name="lblErrorDate" Height="25" Visibility="Hidden" Foreground="Red"/>
 
                 </StackPanel>
