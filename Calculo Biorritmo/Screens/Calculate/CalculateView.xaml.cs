@@ -1,10 +1,14 @@
 ﻿using Autofac;
+using Calculo_Biorritmo.Algorytms;
 using Calculo_Biorritmo.ApplicationLayer.Queries.Employees.Data;
 using Calculo_Biorritmo.Data;
 using Calculo_Biorritmo.Extensions.ContextExtensions;
 using Calculo_Biorritmo.Screens.Calculate.BiorytmResults;
 using Calculo_Biorritmo.ViewModel;
 using MediatR;
+using OxyPlot;
+using OxyPlot.Axes;
+using OxyPlot.Series;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,14 +31,18 @@ namespace Calculo_Biorritmo.Screens.Calculate
     /// </summary>
     public partial class CalculateView : UserControl
     {
+        Generadora generador;
+        Random r = new Random();
         EmployeesVM vm = new EmployeesVM();
         private IMediator _mediator;
         private int dias;
         private DateTime _fechaNacimiento;
+
         public CalculateView()
         {
             InitializeComponent();
             init();
+            generador = new Generadora();
         }
 
         public void init()
@@ -86,29 +94,45 @@ namespace Calculo_Biorritmo.Screens.Calculate
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            dias = int.Parse(tbDiasVividos.Text);
-            var biorritmoFisico = CalcularBiorritmo(dias,23);
-            var biorritmoEmocional = CalcularBiorritmo(dias, 28);
-            var biorritmoIntelectual = CalcularBiorritmo(dias, 33);
-            var biorritmoIntuicional = CalcularBiorritmo(dias, 38);
+            generador.CalcularBiorritmo(int.Parse(tbDiasVividos.Text));
+            //Tabla.ItemsSource = null;
+            //Tabla.ItemsSource = generador.Puntos;
+            PlotModel model = new PlotModel();
+            LinearAxis ejeX = new LinearAxis();
+            ejeX.Minimum = double.Parse(tbDiasVividos.Text);
+            ejeX.Maximum = double.Parse(tbDiasVividos.Text);
+            ejeX.Position = AxisPosition.Bottom;
 
-            var results = new Results(tbAccidentes.Text,_fechaNacimiento.ToString(),tbCurp.Text,biorritmoFisico,biorritmoEmocional,biorritmoIntelectual,biorritmoIntuicional);
-            results.ShowDialog(); 
-        }
+            LinearAxis ejeY = new LinearAxis();
+            ejeY.Minimum = generador.Puntos.Min(p => p.Y);
+            ejeY.Maximum = generador.Puntos.Max(p => p.Y);
+            ejeY.Position = AxisPosition.Left;
 
-        public List<Double> CalcularBiorritmo(int diasVividos,int teoria)
-        {
-            List<Double> values = new List<Double>();
-            
-            for (int i = 0; i < 30; i++)
+            model.Axes.Add(ejeX);
+            model.Axes.Add(ejeY);
+            model.Title = "Datos generados";
+            LineSeries linea = new LineSeries();
+            foreach (var item in generador.Puntos)
             {
-                var dayValue = (2 * Math.PI * (diasVividos+i))/teoria;
-                var sinValue = Math.Sin(dayValue);
-                var roundedValue = Math.Round(sinValue, 9, MidpointRounding.ToEven);
-                values.Add(roundedValue);
+                linea.Points.Add(new DataPoint(item.X, item.Y));
             }
-            
-            return values;
+            linea.Title = "Valores generados";
+            linea.Color = OxyColor.FromRgb(byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()));
+            model.Series.Add(linea);
+            asd.Model = model;
+
+            //dias = int.Parse(tbDiasVividos.Text);
+            //var biorritmoFisico = CalcularBiorritmo(dias,23);
+            //var biorritmoEmocional = CalcularBiorritmo(dias, 28);
+            //var biorritmoIntelectual = CalcularBiorritmo(dias, 33);
+            //var biorritmoIntuicional = CalcularBiorritmo(dias, 38);
+
+            //var results = new Results(tbAccidentes.Text,_fechaNacimiento.ToString(),tbCurp.Text,biorritmoFisico,biorritmoEmocional,biorritmoIntelectual,biorritmoIntuicional);
+            //results.ShowDialog(); 
+
+
         }
+
+
     }
 }
