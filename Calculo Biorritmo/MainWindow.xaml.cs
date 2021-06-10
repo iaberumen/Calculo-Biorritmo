@@ -72,6 +72,7 @@ namespace Calculo_Biorritmo
         {
             DIContainer.container = AutofacRegistrations.Register();
             gridView.Children.Add(new HomeView());
+
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)

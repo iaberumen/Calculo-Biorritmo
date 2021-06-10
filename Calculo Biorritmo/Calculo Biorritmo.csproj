@@ -125,6 +125,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Algorytms\AccidentAlgorytm.cs" />
+    <Compile Include="Algorytms\Generadora.cs" />
+    <Compile Include="Algorytms\Punto.cs" />
     <Compile Include="ApplicationLayer\Constants\BiorytmDays.cs" />
     <Compile Include="ApplicationLayer\Queries\Accidents\Data\GetAccidentDataGridCommand.cs" />
     <Compile Include="ApplicationLayer\Queries\Accidents\Data\GetAccidentDataGridHandler.cs" />
