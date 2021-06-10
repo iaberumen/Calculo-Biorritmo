@@ -2,6 +2,7 @@
 using Calculo_Biorritmo.Data;
 using Calculo_Biorritmo.Models;
 using Calculo_Biorritmo.Utils.Data;
+using Calculo_Biorritmo.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,7 +55,7 @@ namespace Calculo_Biorritmo.Algorytms
 
         }*/
 
-        public static List<Double> startAlgorytm()
+        public static AvgVM startAlgorytm()
         {
             var accidentes =  new List<accident>();
             using (var ctx = new EmployeeEntity())
@@ -64,6 +65,7 @@ namespace Calculo_Biorritmo.Algorytms
             if (!accidentes.Any())
                 return null;
 
+            
             var RegistrosFisicos = new List<Double>();
             var RegistrosEmocionales = new List<Double>();
             var RegistrosIntuicionales = new List<Double>();
@@ -81,14 +83,22 @@ namespace Calculo_Biorritmo.Algorytms
             var modaIntelectual = RegistrosIntelectuales.GroupBy(x => x).Where(g => g.Count() > 1).OrderByDescending(x => x.Count()).Select(x => x.Key).FirstOrDefault();
             var modaIntuicional = RegistrosIntuicionales.GroupBy(x => x).Where(g => g.Count() > 1).OrderByDescending(x => x.Count()).Select(x => x.Key).FirstOrDefault();
 
-            var moda = new List<double>();
-            moda.Add(modaFisico);
-            moda.Add(modaEmocional);
-            moda.Add(modaIntelectual);
-            moda.Add(modaIntuicional);
+            var totalModaFisico = accidentes.Where(x => x.residuo_fisico == modaFisico).Count();
+            var totalModaEmocional = accidentes.Where(x => x.residuo_emocional == modaEmocional).Count();
+            var totalModaIntelectual = accidentes.Where(x => x.residuo_intelectual == modaIntelectual).Count();
+            var totalModaIntuicional = accidentes.Where(x => x.residuo_intuicional == modaIntuicional).Count();
+
+            var moda = new AvgVM();
+            moda.biorritmoFisico = modaFisico;
+            moda.biorritmoEmocional = modaEmocional;
+            moda.biorritmoIntelectual = modaIntelectual;
+            moda.biorritmoIntuicional = modaIntuicional;
+            moda.totalBiorritmoFisico = totalModaFisico;
+            moda.totalBiorritmoEmocional = totalModaEmocional;
+            moda.totalBiorritmoIntelectual = totalModaIntelectual;
+            moda.totalBiorritmoIntuicional = totalModaIntuicional;
 
             return moda;
-
         }
 
         public static List<int> checkCritics()
@@ -157,7 +167,7 @@ namespace Calculo_Biorritmo.Algorytms
             return critics;
         }
 
-        public static List<Double> CalculateErrorMargin()
+        /*public static List<Double> CalculateErrorMargin()
         {
 
             var promedios = startAlgorytm();
@@ -183,7 +193,7 @@ namespace Calculo_Biorritmo.Algorytms
                 margins.Add(under);
             }
             return margins;
-        }
+        }*/
 
 
         public static double? calculateCritics(List<Double> List)

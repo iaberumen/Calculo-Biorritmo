@@ -78,18 +78,22 @@
                         <StackPanel Orientation="Horizontal">
                             <Label Content="En Fisico"/>
                             <Label Name="lblAvgFisic"/>
+                            <Label Name="lblAvgFisicTotal"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="En Emocional"/>
                             <Label Name="lblAvgEmotional"/>
+                            <Label Name="lblAvgEmotionalTotal"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="En Intelectual"/>
                             <Label Name="lblAvgIntelectual"/>
+                            <Label Name="lblAvgIntelectualTotal"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="En Intuicional"/>
                             <Label Name="lblAvgIntuitional"/>
+                            <Label Name="lblAvgIntuitionalTotal"/>
                         </StackPanel>
                     </StackPanel>
                     

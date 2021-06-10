@@ -187,6 +187,7 @@
     <Compile Include="Utils\tools.cs" />
     <Compile Include="Utils\Validators\InputValidators.cs" />
     <Compile Include="ViewModel\AccidentsVM.cs" />
+    <Compile Include="ViewModel\DataVM.cs" />
     <Compile Include="ViewModel\EmployeesVM.cs" />
     <Page Include="Loading\LoadingView.xaml">
       <SubType>Designer</SubType>

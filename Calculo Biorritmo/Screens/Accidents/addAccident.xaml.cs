@@ -70,14 +70,14 @@ namespace Calculo_Biorritmo.Screens.Accidents
             bool errors = false;
             if (string.IsNullOrEmpty(vm.curp))
             {
-                lblErrorCurp.Content = "El RFC no puede ser vacio";
+                lblErrorCurp.Content = "El CURP no puede ser vacio";
                 lblErrorCurp.Visibility = Visibility.Visible;
                 errors = true;
             }
 
             if (vm.curp.Length != 18)
             {
-                lblErrorCurp.Content = "El RFC debe ser a 18 digitos";
+                lblErrorCurp.Content = "El CURP debe ser a 18 digitos";
                 lblErrorCurp.Visibility = Visibility.Visible;
                 errors = true;
             }
@@ -91,7 +91,7 @@ namespace Calculo_Biorritmo.Screens.Accidents
 
             if (!InputValidators.validateCURP(vm.curp))
             {
-                lblErrorCurp.Content = "Ingresa un RFC valido";
+                lblErrorCurp.Content = "Ingresa un CURP valido";
                 lblErrorCurp.Visibility = Visibility.Visible;
                 errors = true;
             }
