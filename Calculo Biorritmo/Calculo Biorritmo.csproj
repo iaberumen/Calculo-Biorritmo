@@ -163,6 +163,9 @@
     <Compile Include="Screens\Accidents\AlgorytmInfo.xaml.cs">
       <DependentUpon>AlgorytmInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Screens\Calculate\BiorytmResults\EmployeeBiorytm.xaml.cs">
+      <DependentUpon>EmployeeBiorytm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Connection.cs" />
     <Compile Include="Interfaces\ISystemView.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -216,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Screens\Accidents\AlgorytmInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Calculate\BiorytmResults\EmployeeBiorytm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

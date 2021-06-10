@@ -94,7 +94,7 @@ namespace Calculo_Biorritmo.Screens.Calculate
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            generador.CalcularBiorritmo(int.Parse(tbDiasVividos.Text));
+            generador.CalcularBiorritmo(int.Parse(tbDiasVividos.Text),28);
             //Tabla.ItemsSource = null;
             //Tabla.ItemsSource = generador.Puntos;
             PlotModel model = new PlotModel();
@@ -119,7 +119,7 @@ namespace Calculo_Biorritmo.Screens.Calculate
             linea.Title = "Valores generados";
             linea.Color = OxyColor.FromRgb(byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()));
             model.Series.Add(linea);
-            asd.Model = model;
+            //asd.Model = model;
 
             //dias = int.Parse(tbDiasVividos.Text);
             //var biorritmoFisico = CalcularBiorritmo(dias,23);

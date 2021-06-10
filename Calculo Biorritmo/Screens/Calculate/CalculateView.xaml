@@ -72,9 +72,9 @@
                     </Grid>
 
                     <StackPanel Orientation="Vertical">
-                        <!--<Label Style="{StaticResource TitleInformation}"  Margin="20,0">Accidentes registrados</Label>-->
+                        <Label Style="{StaticResource TitleInformation}"  Margin="20,0">Accidentes registrados</Label>
                         <Border Background="LightGray" CornerRadius="10" Width="280" HorizontalAlignment="Left" BorderBrush="LightGray" BorderThickness="1 1 2 4">
-                            <!--<TextBox Name="tbAccidentes" 
+                            <TextBox Name="tbAccidentes" 
                                      Background="LightGray" 
                              MaxLength="10" 
                              Height="20"
@@ -84,14 +84,14 @@
                              Width="230"
                              TextAlignment="Center" 
                              FontWeight="Bold" 
-                             FontSize="16"/>-->
+                             FontSize="16"/>
                         </Border>
                     </StackPanel>
 
                     <StackPanel Orientation="Vertical">
-                        <!--<Label Style="{StaticResource TitleInformation}"  Margin="20,0">Fecha de nacimiento</Label>-->
+                        <Label Style="{StaticResource TitleInformation}"  Margin="20,0">Fecha de nacimiento</Label>
                         <Border Background="LightGray" CornerRadius="10" Width="280" HorizontalAlignment="Left" BorderBrush="LightGray" BorderThickness="1 1 2 4">
-                            <!--<TextBox Name="tbFechaNacimiento" 
+                            <TextBox Name="tbFechaNacimiento" 
                                      Background="LightGray" 
                              MaxLength="10" 
                              Height="20"
@@ -101,14 +101,14 @@
                              Width="230"
                              TextAlignment="Center" 
                              FontWeight="Bold" 
-                             FontSize="16"/>-->
+                             FontSize="16"/>
                         </Border>
                     </StackPanel>
 
                     <StackPanel Orientation="Vertical">
                         <Label Style="{StaticResource TitleInformation}"  Margin="20,0">Dias Vividos</Label>
                         <Border Background="LightGray" CornerRadius="10" Width="280" HorizontalAlignment="Left" BorderBrush="LightGray" BorderThickness="1 1 2 4">
-                            <!--<TextBox Name="tbDiasVividos"
+                            <TextBox Name="tbDiasVividos"
                                      Background="LightGray" 
                              MaxLength="10" 
                              Height="20"
@@ -118,7 +118,7 @@
                              Width="230"
                              TextAlignment="Center" 
                              FontWeight="Bold" 
-                             FontSize="16"/>-->
+                             FontSize="16"/>
                         </Border>
                     </StackPanel>
 

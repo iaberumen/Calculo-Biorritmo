@@ -13,14 +13,14 @@ namespace Calculo_Biorritmo.Algorytms
     }
     public List<Punto> Puntos { get; set; }
     
-        public List<Punto> CalcularBiorritmo(int diasVividos)
+        public List<Punto> CalcularBiorritmo(int diasVividos, int teoria)
         {
         Puntos = new List<Punto>();
         //List<Double> values = new List<Double>();
 
             for (int i = 0; i < 30; i++)
             {
-                //var dayValue = (2 * Math.PI * (diasVividos + i)) / teoria;
+                var dayValue = (2 * Math.PI * (diasVividos + i)) / teoria;
                 var sinValue = Math.Sin(dayValue);
                 var roundedValue = Math.Round(sinValue, 9, MidpointRounding.ToEven);
                 //values.Add(roundedValue);
