@@ -52,22 +52,31 @@
             <Grid  Grid.Row="2" Margin="20 30">
                 <DataGrid Name ="empleado" 
                       IsReadOnly="True"
+                    SelectionUnit="Cell"
                       AutoGenerateColumns="False"
                       CanUserResizeRows="False"
                     CanUserResizeColumns="False"
                     CanUserReorderColumns="False"
                     CanUserSortColumns="False"
                       ColumnHeaderStyle="{StaticResource ColumnHeaderStyle1}"
-                      Foreground="{StaticResource PrimaryText}"
-                      ColumnWidth="*">
+                      Foreground="{StaticResource PrimaryText}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Curp" Binding="{Binding curp}" />
-                        <DataGridTextColumn Header="Fecha de Accidente" Binding="{Binding fecha_accidente}" />
+                        <DataGridTextColumn Header="Curp" Width="*"  Binding="{Binding curp}" />
+                        <DataGridTextColumn Header="Fecha accidente" Width="*" Binding="{Binding fecha_accidente, StringFormat='{}{0:dd/MM/yyyy}'}" />
+                        <DataGridTextColumn Header="Fisico" Width=".7*" Binding="{Binding residuo_fisico}" />
+                        <DataGridTextColumn Header="Emocional" Width=".7*" Binding="{Binding residuo_emocional}" />
+                        <DataGridTextColumn Header="Intelectual" Width=".7*" Binding="{Binding residuo_intelectual}" />
+                        <DataGridTextColumn Header="Intuicional" Width=".7*" Binding="{Binding residuo_intuicional}" />
                     </DataGrid.Columns>
+                    <DataGrid.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="TextBlock.TextAlignment" Value="Right" />
+                        </Style>
+                    </DataGrid.CellStyle>
                 </DataGrid>
             </Grid>
             <Grid Grid.Row="3">
-                <StackPanel Margin="30 20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
+                <StackPanel Margin="20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
                     <Button Name="btnCheckNeuralInfo" 
                     Style="{StaticResource RoundedButtonGray}"
                     Content="Revisar datos" 

@@ -38,6 +38,7 @@ namespace Calculo_Biorritmo.Screens.Accidents
         public async void init()
         {
             gridForm.DataContext = vm;
+            vm.fecha_accidente = DateTime.Now;
             _mediator = DIContainer.container.Resolve<IMediator>();
             //registerall();
         }
@@ -110,7 +111,8 @@ namespace Calculo_Biorritmo.Screens.Accidents
                 return;
             }
 
-            int dias = DataCalc.daysLived(vm.fecha_accidente);
+            DateTime fecha_nacimiento = DataCalc.getBirthDate(vm.curp);
+            int dias = DataCalc.daysLived(fecha_nacimiento);
             var biorritmoFisico = CalcularBiorritmo(dias, 23);
             var biorritmoEmocional = CalcularBiorritmo(dias, 28);
             var biorritmoIntelectual = CalcularBiorritmo(dias, 33);
@@ -120,10 +122,11 @@ namespace Calculo_Biorritmo.Screens.Accidents
             {
                 var createCommand = new RegisterAccidentCommand(vm.curp, vm.fecha_accidente, biorritmoFisico, biorritmoEmocional, biorritmoIntelectual, biorritmoIntuicional);
                 await _mediator.Send(createCommand);
+                MessageBox.Show("Accidente registrado con exito");
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Ha ocurrido un error al registrar el accidente");
+                MessageBox.Show("Ha ocurrido un error al registrar el accidente"+ex.Message);
                 return;
             }
             Close();

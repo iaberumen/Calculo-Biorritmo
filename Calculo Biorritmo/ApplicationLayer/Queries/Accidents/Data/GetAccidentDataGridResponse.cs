@@ -19,6 +19,10 @@ namespace Calculo_Biorritmo.ApplicationLayer.Queries.Accidents.Data
     {
         public string curp { get; set; }
         public DateTime? fecha_accidente { get; set; }
+        public double residuo_fisico { get; set; }
+        public double residuo_emocional { get; set; }
+        public double residuo_intelectual { get; set; }
+        public double residuo_intuicional { get; set; }
     }
     
 }
