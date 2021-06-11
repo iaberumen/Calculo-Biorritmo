@@ -93,7 +93,7 @@ namespace Calculo_Biorritmo
             resetColors();
             Biorritm.BorderBrush = Brushes.LightBlue;
             gridView.Children.Clear();
-            gridView.Children.Add(new CalculateView());
+            gridView.Children.Add(new CalculateView(ChangeCalculateView));
         }
 
         private void Main_Click(object sender, RoutedEventArgs e)
@@ -120,7 +120,11 @@ namespace Calculo_Biorritmo
             Accident.BorderBrush = Brushes.Transparent;
         }
 
-        
+        public void ChangeCalculateView(UserControl userControl)
+        {
+            gridView.Children.Clear();
+            gridView.Children.Add(userControl);
+        }
 
 
     }

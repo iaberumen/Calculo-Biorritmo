@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Calculo_Biorritmo.Screens.Calculate.BiorytmResults"
+             xmlns:local="clr-namespace:Calculo_Biorritmo.Screens.Calculate.BiorytmResults" xmlns:oxy="http://oxyplot.org/wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Border CornerRadius="0 30 30 0" Background="White">
@@ -11,7 +11,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="AUTO"/>
                 <RowDefinition/>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="AUTO"/>
             </Grid.RowDefinitions>
 
             <Border CornerRadius="0 30 0 0" Background="{StaticResource PrimaryHuePrincipal}">
@@ -24,7 +24,21 @@
                 Foreground="White"/>
                 </Grid>
             </Border>
-
+            <oxy:PlotView Grid.Row="1" Name="asd">
+                <!--<oxy:Plot.Axes>
+                    <oxy:LinearAxis Position="Bottom" Minimum="-20" Maximum="80" />
+                    <oxy:LinearAxis Position="Left" Minimum="-10" Maximum="10" />
+                </oxy:Plot.Axes>-->
+            </oxy:PlotView>
+            <!--<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button 
+                    Name="BtnRegresar"
+                    Margin="10"
+                    Style="{StaticResource RoundedButtonGray}"
+                    Content="Regresar"
+                    Padding="10 0"
+                    Click="BtnRegresar_Click"/>
+            </StackPanel>-->
         </Grid>
     </Border>
 </UserControl>

@@ -31,18 +31,20 @@ namespace Calculo_Biorritmo.Screens.Calculate
     /// </summary>
     public partial class CalculateView : UserControl
     {
-        Generadora generador;
-        Random r = new Random();
+        
+        
         EmployeesVM vm = new EmployeesVM();
         private IMediator _mediator;
         private int dias;
         private DateTime _fechaNacimiento;
+        public Action<UserControl> _userControl;
 
-        public CalculateView()
+        public CalculateView(Action<UserControl> action)
         {
             InitializeComponent();
             init();
-            generador = new Generadora();
+            
+            _userControl = action;
         }
 
         public void init()
@@ -94,32 +96,7 @@ namespace Calculo_Biorritmo.Screens.Calculate
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            generador.CalcularBiorritmo(int.Parse(tbDiasVividos.Text),28);
-            //Tabla.ItemsSource = null;
-            //Tabla.ItemsSource = generador.Puntos;
-            PlotModel model = new PlotModel();
-            LinearAxis ejeX = new LinearAxis();
-            ejeX.Minimum = double.Parse(tbDiasVividos.Text);
-            ejeX.Maximum = double.Parse(tbDiasVividos.Text);
-            ejeX.Position = AxisPosition.Bottom;
-
-            LinearAxis ejeY = new LinearAxis();
-            ejeY.Minimum = generador.Puntos.Min(p => p.Y);
-            ejeY.Maximum = generador.Puntos.Max(p => p.Y);
-            ejeY.Position = AxisPosition.Left;
-
-            model.Axes.Add(ejeX);
-            model.Axes.Add(ejeY);
-            model.Title = "Datos generados";
-            LineSeries linea = new LineSeries();
-            foreach (var item in generador.Puntos)
-            {
-                linea.Points.Add(new DataPoint(item.X, item.Y));
-            }
-            linea.Title = "Valores generados";
-            linea.Color = OxyColor.FromRgb(byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()));
-            model.Series.Add(linea);
-            //asd.Model = model;
+            _userControl(new EmployeeBiorytm(tbDiasVividos.Text));
 
             //dias = int.Parse(tbDiasVividos.Text);
             //var biorritmoFisico = CalcularBiorritmo(dias,23);
