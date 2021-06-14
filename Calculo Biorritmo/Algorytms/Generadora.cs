@@ -18,21 +18,16 @@ namespace Calculo_Biorritmo.Algorytms
         Puntos = new List<Punto>();
         //List<Double> values = new List<Double>();
 
-            for (int i = 0; i < 30; i++)
+            for (double i = 0; i < 30; i+=.1)
             {
                 var dayValue = (2 * Math.PI * (diasVividos + i)) / teoria;
                 var sinValue = Math.Sin(dayValue);
                 var roundedValue = Math.Round(sinValue, 9, MidpointRounding.ToEven);
                 //values.Add(roundedValue);
-                Puntos.Add(new Punto(i, Evaluar(i)));
+                Puntos.Add(new Punto(i, roundedValue));
             }
 
             return Puntos;
-        }
-        private double Evaluar(double i)
-        {
-            //Aqui cambiar la función para evaluar
-            return Math.Sin(i);
         }
     }
 }

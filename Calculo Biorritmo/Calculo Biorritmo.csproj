@@ -152,10 +152,11 @@
     <Compile Include="Loading\LoadingView.xaml.cs">
       <DependentUpon>LoadingView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106092054295_init.cs" />
-    <Compile Include="Migrations\202106092054295_init.designer.cs">
-      <DependentUpon>202106092054295_init.cs</DependentUpon>
+    <Compile Include="Migrations\202106141937530_init.cs" />
+    <Compile Include="Migrations\202106141937530_init.designer.cs">
+      <DependentUpon>202106141937530_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\accident.cs" />
     <Compile Include="Screens\Accidents\addAccident.xaml.cs">
       <DependentUpon>addAccident.xaml</DependentUpon>
@@ -168,7 +169,6 @@
     </Compile>
     <Compile Include="Utils\Connection.cs" />
     <Compile Include="Interfaces\ISystemView.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\employee.cs" />
     <Compile Include="Screens\Accidents\AccidentView.xaml.cs">
       <DependentUpon>AccidentView.xaml</DependentUpon>
@@ -264,8 +264,8 @@
     <EmbeddedResource Include="Front\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106092054295_init.resx">
-      <DependentUpon>202106092054295_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106141937530_init.resx">
+      <DependentUpon>202106141937530_init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

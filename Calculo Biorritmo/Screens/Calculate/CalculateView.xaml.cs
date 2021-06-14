@@ -72,7 +72,7 @@ namespace Calculo_Biorritmo.Screens.Calculate
 
             if (!response.data.Any())
             {
-                MessageBox.Show("No se encontro un empleado registrado con ese curp");
+                MessageBox.Show("No se encontro un empleado registrado con ese CURP");
                 return;
             }
 
@@ -81,7 +81,7 @@ namespace Calculo_Biorritmo.Screens.Calculate
             
             _fechaNacimiento = response.data.Select(x => x.fecha_nacimiento).First();
             tbDiasVividos.Text = Utils.Data.DataCalc.daysLived(_fechaNacimiento).ToString();
-            tbFechaNacimiento.Text = _fechaNacimiento.ToString();
+            tbFechaNacimiento.Text = _fechaNacimiento.ToString("dd/MM/yyyy");
             btnCalculate.IsEnabled = true;
         }
 

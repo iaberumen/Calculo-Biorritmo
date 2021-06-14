@@ -1,4 +1,5 @@
 ﻿using Calculo_Biorritmo.Algorytms;
+using Calculo_Biorritmo.ApplicationLayer.Constants;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
@@ -37,13 +38,13 @@ namespace Calculo_Biorritmo.Screens.Calculate.BiorytmResults
 
         public void init()
         {
-            generador.CalcularBiorritmo(Convert.ToInt32(_livingDays), 28);
+            generador.CalcularBiorritmo(Convert.ToInt32(_livingDays), BiorytmDays.biorritmo_fisico);
             //Tabla.ItemsSource = null;
             //Tabla.ItemsSource = generador.Puntos;
             PlotModel model = new PlotModel();
             LinearAxis ejeX = new LinearAxis();
-            ejeX.Minimum = double.Parse(_livingDays);
-            ejeX.Maximum = double.Parse(_livingDays);
+            ejeX.Minimum = double.Parse("0");
+            ejeX.Maximum = double.Parse("30");
             ejeX.Position = AxisPosition.Bottom;
 
             LinearAxis ejeY = new LinearAxis();
@@ -53,17 +54,58 @@ namespace Calculo_Biorritmo.Screens.Calculate.BiorytmResults
 
             model.Axes.Add(ejeX);
             model.Axes.Add(ejeY);
-            model.Title = "Datos generados";
-            LineSeries linea = new LineSeries();
+            model.Title = "Biorritmo";
+            LineSeries Fisico = new LineSeries();
             foreach (var item in generador.Puntos)
             {
-                linea.Points.Add(new DataPoint(item.X, item.Y));
+                Fisico.Points.Add(new DataPoint(item.X, item.Y));
             }
-            linea.Title = "Valores generados";
-            linea.Color = OxyColor.FromRgb(byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()));
-            model.Series.Add(linea);
+            Fisico.Title = "Fisico";
+            Fisico.Color = OxyColor.FromRgb(byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()));
+
+            generador.CalcularBiorritmo(Convert.ToInt32(_livingDays), BiorytmDays.biorritmo_emocional);
+            LineSeries Emocional = new LineSeries();
+            foreach (var item in generador.Puntos)
+            {
+                Emocional.Points.Add(new DataPoint(item.X, item.Y));
+            }
+            Emocional.Title = "Emocional";
+            Emocional.Color = OxyColor.FromRgb(byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()));
+
+            generador.CalcularBiorritmo(Convert.ToInt32(_livingDays), BiorytmDays.biorritmo_intelectual);
+            LineSeries Intelectual = new LineSeries();
+            foreach (var item in generador.Puntos)
+            {
+                Intelectual.Points.Add(new DataPoint(item.X, item.Y));
+            }
+            Intelectual.Title = "Intelectual";
+            Intelectual.Color = OxyColor.FromRgb(byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()));
+
+            generador.CalcularBiorritmo(Convert.ToInt32(_livingDays), BiorytmDays.biorritmo_intuicional);
+            LineSeries Intuicional = new LineSeries();
+            foreach (var item in generador.Puntos)
+            {
+                Intuicional.Points.Add(new DataPoint(item.X, item.Y));
+            }
+            Intuicional.Title = "Intuicional";
+            Intuicional.Color = OxyColor.FromRgb(byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()));
+
+            LineSeries Cero = new LineSeries();
+            Cero.Points.Add(new DataPoint(0, 0));
+            Cero.Points.Add(new DataPoint(30, 0));
+            Cero.Color = OxyColor.FromRgb(0, 0, 0);
+
+            model.Series.Add(Fisico);
+            model.Series.Add(Emocional);
+            model.Series.Add(Intelectual);
+            model.Series.Add(Intuicional);
+            model.Series.Add(Cero);
             asd.Model = model;
         }
 
+        private void BtnRegresar_Click(object sender, RoutedEventArgs e)
+        {
+            //_userControl(new CalculateView(tbDiasVividos.Text));
+        }
     }
 }

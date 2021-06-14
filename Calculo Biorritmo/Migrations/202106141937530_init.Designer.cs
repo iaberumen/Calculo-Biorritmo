@@ -13,7 +13,7 @@ namespace Calculo_Biorritmo.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202106092054295_init"; }
+            get { return "202106141937530_init"; }
         }
         
         string IMigrationMetadata.Source

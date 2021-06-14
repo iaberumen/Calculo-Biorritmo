@@ -24,21 +24,43 @@
                 Foreground="White"/>
                 </Grid>
             </Border>
-            <oxy:PlotView Grid.Row="1" Name="asd">
-                <!--<oxy:Plot.Axes>
-                    <oxy:LinearAxis Position="Bottom" Minimum="-20" Maximum="80" />
-                    <oxy:LinearAxis Position="Left" Minimum="-10" Maximum="10" />
-                </oxy:Plot.Axes>-->
-            </oxy:PlotView>
-            <!--<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <Label Content="Biorritmos" Style="{StaticResource StartTitle}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <Label Content="Fisico"/>
+                            <Label Content="Emocional"/>
+                            <Label Content="Intelectual"/>
+                            <Label Content="Intuicional"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label/>
+                            <Label Name="lblFisicBiorytm"/>
+                            <Label Name="lblEmotionalBiorytm"/>
+                            <Label Name="lblIntelectualBiorytm"/>
+                            <Label Name="lblIntuitionalBiorytm"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <oxy:PlotView Name="asd" Grid.Column="1" Margin="0 0 20 30"/>
+            </Grid>
+            
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
                 <Button 
                     Name="BtnRegresar"
                     Margin="10"
                     Style="{StaticResource RoundedButtonGray}"
                     Content="Regresar"
                     Padding="10 0"
+                    Width="150"
+                    Height="50"
                     Click="BtnRegresar_Click"/>
-            </StackPanel>-->
+            </StackPanel>
         </Grid>
     </Border>
 </UserControl>
