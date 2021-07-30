@@ -1,5 +1,6 @@
 ﻿using Calculo_Biorritmo.Algorytms;
 using Calculo_Biorritmo.ApplicationLayer.Constants;
+using Calculo_Biorritmo.Utils.Data;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
@@ -28,22 +29,24 @@ namespace Calculo_Biorritmo.Screens.Calculate.BiorytmResults
         Random r = new Random();
         Generadora generador;
         private string _livingDays;
-        public EmployeeBiorytm(string livingDays)
+        private int _livingDaysFirstDayMonth;
+        public EmployeeBiorytm(string livingDays,int livingDaysFirstDayMonth)
         {
             InitializeComponent();
             generador = new Generadora();
             _livingDays = livingDays;
+            _livingDaysFirstDayMonth = livingDaysFirstDayMonth;
             init();
         }
 
         public void init()
         {
-            generador.CalcularBiorritmo(Convert.ToInt32(_livingDays), BiorytmDays.biorritmo_fisico);
+            generador.CalcularBiorritmo(_livingDaysFirstDayMonth, BiorytmDays.biorritmo_fisico);
             //Tabla.ItemsSource = null;
             //Tabla.ItemsSource = generador.Puntos;
             PlotModel model = new PlotModel();
             LinearAxis ejeX = new LinearAxis();
-            ejeX.Minimum = double.Parse("0");
+            ejeX.Minimum = double.Parse("1");
             ejeX.Maximum = double.Parse("30");
             ejeX.Position = AxisPosition.Bottom;
 
@@ -63,7 +66,7 @@ namespace Calculo_Biorritmo.Screens.Calculate.BiorytmResults
             Fisico.Title = "Fisico";
             Fisico.Color = OxyColor.FromRgb(byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()));
 
-            generador.CalcularBiorritmo(Convert.ToInt32(_livingDays), BiorytmDays.biorritmo_emocional);
+            generador.CalcularBiorritmo(_livingDaysFirstDayMonth, BiorytmDays.biorritmo_emocional);
             LineSeries Emocional = new LineSeries();
             foreach (var item in generador.Puntos)
             {
@@ -72,7 +75,7 @@ namespace Calculo_Biorritmo.Screens.Calculate.BiorytmResults
             Emocional.Title = "Emocional";
             Emocional.Color = OxyColor.FromRgb(byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()));
 
-            generador.CalcularBiorritmo(Convert.ToInt32(_livingDays), BiorytmDays.biorritmo_intelectual);
+            generador.CalcularBiorritmo(_livingDaysFirstDayMonth, BiorytmDays.biorritmo_intelectual);
             LineSeries Intelectual = new LineSeries();
             foreach (var item in generador.Puntos)
             {
@@ -81,7 +84,7 @@ namespace Calculo_Biorritmo.Screens.Calculate.BiorytmResults
             Intelectual.Title = "Intelectual";
             Intelectual.Color = OxyColor.FromRgb(byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()), byte.Parse(r.Next(0, 255).ToString()));
 
-            generador.CalcularBiorritmo(Convert.ToInt32(_livingDays), BiorytmDays.biorritmo_intuicional);
+            generador.CalcularBiorritmo(_livingDaysFirstDayMonth, BiorytmDays.biorritmo_intuicional);
             LineSeries Intuicional = new LineSeries();
             foreach (var item in generador.Puntos)
             {
@@ -101,11 +104,59 @@ namespace Calculo_Biorritmo.Screens.Calculate.BiorytmResults
             model.Series.Add(Intuicional);
             model.Series.Add(Cero);
             asd.Model = model;
+
+            var fisic = DataCalc.CalculateBiorritm(Convert.ToInt32(_livingDays), BiorytmDays.biorritmo_fisico);
+            var emotional = DataCalc.CalculateBiorritm(Convert.ToInt32(_livingDays), BiorytmDays.biorritmo_emocional);
+            var intelectual = DataCalc.CalculateBiorritm(Convert.ToInt32(_livingDays), BiorytmDays.biorritmo_intelectual);
+            var intuitional = DataCalc.CalculateBiorritm(Convert.ToInt32(_livingDays), BiorytmDays.biorritmo_intuicional);
+
+            lblFisicBiorytm.Content = "Fisico: " + fisic[1];
+            lblEmotionalBiorytm.Content = "Emocional: " + emotional[1];
+            lblIntelectualBiorytm.Content = "Intelectual: " + intelectual[1];
+            lblIntuitionalBiorytm.Content = "Intuicional: " + intuitional[1];
+
+            if(AccidentAlgorytm.calculateCritics(fisic) == null)
+            {
+                lblFisicCritic.Content = "Fisico: OK...";
+            }
+            else
+            {
+                lblFisicCritic.Content = "Fisico: CRITICO";
+                lblFisicCritic.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            if (AccidentAlgorytm.calculateCritics(emotional) == null)
+            {
+                lblEmotionalCritic.Content = "Emocional: OK...";
+            }
+            else
+            {
+                lblEmotionalCritic.Content = "Emocional: CRITICO";
+                lblEmotionalCritic.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            if (AccidentAlgorytm.calculateCritics(intelectual) == null)
+            {
+                lblIntelectualCritic.Content = "Intelectual: OK...";
+            }
+            else
+            {
+                lblIntelectualCritic.Content = "Intelectual: CRITICO";
+                lblIntelectualCritic.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            if (AccidentAlgorytm.calculateCritics(intuitional) == null)
+            {
+                lblIntuitionalCritic.Content = "Intuicional: OK...";
+            }
+            else
+            {
+                lblIntuitionalCritic.Content = "Intuicional: CRITICO";
+                lblIntuitionalCritic.Foreground = new SolidColorBrush(Colors.Red);
+            }
         }
 
         private void BtnRegresar_Click(object sender, RoutedEventArgs e)
         {
             //_userControl(new CalculateView(tbDiasVividos.Text));
         }
+
     }
 }

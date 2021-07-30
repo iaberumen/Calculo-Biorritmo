@@ -19,6 +19,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Calculo_Biorritmo.ApplicationLayer.Constants;
 
 namespace Calculo_Biorritmo.Screens.Accidents
 {
@@ -35,7 +36,7 @@ namespace Calculo_Biorritmo.Screens.Accidents
             init();
         }
 
-        public async void init()
+        public void init()
         {
             gridForm.DataContext = vm;
             vm.fecha_accidente = DateTime.Now;
@@ -45,21 +46,30 @@ namespace Calculo_Biorritmo.Screens.Accidents
 
         /*private async void registerall()
         {
-            var empleado = new List<employee>();
+            var accidents = new List<accident>();
 
             using (var ctx = new EmployeeEntity())
-                empleado = ctx.employees.ToList();
+                accidents = ctx.accidents.ToList();
 
-            foreach(var item in empleado)
+            foreach(var item in accidents)
             {
-                int dias = DataCalc.daysLived(item.fecha_accidente ?? DateTime.Now);
-                var biorritmoFisico = CalcularBiorritmo(dias, 23);
-                var biorritmoEmocional = CalcularBiorritmo(dias, 28);
-                var biorritmoIntelectual = CalcularBiorritmo(dias, 33);
-                var biorritmoIntuicional = CalcularBiorritmo(dias, 38);
+                var birthDate = DataCalc.getBirthDate(item.curp);
+                int dias = DataCalc.daysLived(birthDate, item.fecha_accidente);
+                var biorritmoFisico = CalcularBiorritmo(dias, BiorytmDays.biorritmo_fisico);
+                var biorritmoEmocional = CalcularBiorritmo(dias, BiorytmDays.biorritmo_emocional);
+                var biorritmoIntelectual = CalcularBiorritmo(dias, BiorytmDays.biorritmo_intelectual);
+                var biorritmoIntuicional = CalcularBiorritmo(dias, BiorytmDays.biorritmo_intuicional);
 
-                var createCommand = new RegisterAccidentCommand(item.curp, item.fecha_accidente, biorritmoFisico, biorritmoEmocional, biorritmoIntelectual, biorritmoIntuicional);
-                await _mediator.Send(createCommand);
+                using (var ctx = new EmployeeEntity())
+                {
+                    var some = ctx.accidents.Where(x => x.curp == item.curp).First();
+                    some.residuo_fisico = biorritmoFisico;
+                    some.residuo_emocional = biorritmoEmocional;
+                    some.residuo_intelectual = biorritmoIntelectual;
+                    some.residuo_intuicional = biorritmoIntuicional;
+                    ctx.SaveChanges();
+                }
+                   
             }
 
             

@@ -29,22 +29,23 @@
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <StackPanel>
+                <StackPanel Margin="0 20 0 0">
                     <Label Content="Biorritmos" Style="{StaticResource StartTitle}"/>
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>
-                            <Label Content="Fisico"/>
-                            <Label Content="Emocional"/>
-                            <Label Content="Intelectual"/>
-                            <Label Content="Intuicional"/>
-                        </StackPanel>
-                        <StackPanel>
                             <Label/>
-                            <Label Name="lblFisicBiorytm"/>
-                            <Label Name="lblEmotionalBiorytm"/>
-                            <Label Name="lblIntelectualBiorytm"/>
-                            <Label Name="lblIntuitionalBiorytm"/>
+                            <Label Name="lblFisicBiorytm" FontWeight="Bold"/>
+                            <Label Name="lblEmotionalBiorytm" FontWeight="Bold"/>
+                            <Label Name="lblIntelectualBiorytm" FontWeight="Bold"/>
+                            <Label Name="lblIntuitionalBiorytm" FontWeight="Bold"/>
                         </StackPanel>
+                    </StackPanel>
+                    <StackPanel Margin="0 20 0 0">
+                        <Label Content="Criticos" Style="{StaticResource TitleInformation}" FontWeight="Bold"/>
+                        <Label Name="lblFisicCritic" Foreground="Green" FontWeight="Bold"/>
+                        <Label Name="lblEmotionalCritic" Foreground="Green" FontWeight="Bold"/>
+                        <Label Name="lblIntelectualCritic" Foreground="Green" FontWeight="Bold"/>
+                        <Label Name="lblIntuitionalCritic" Foreground="Green" FontWeight="Bold"/>
                     </StackPanel>
                 </StackPanel>
                 <oxy:PlotView Name="asd" Grid.Column="1" Margin="0 0 20 30"/>

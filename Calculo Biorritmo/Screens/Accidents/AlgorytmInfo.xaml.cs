@@ -54,13 +54,13 @@ namespace Calculo_Biorritmo.Screens.Accidents
                 lblTotalCriticAccidentsPercent.Content = "(" + ((critics[6] * 100) / critics[0]).ToString() + "%)";
 
                 lblAvgFisic.Content = avgs.biorritmoFisico.ToString();
-                lblAvgFisicTotal.Content = avgs.totalBiorritmoFisico.ToString();
+                lblAvgFisicTotal.Content = "(" + avgs.totalBiorritmoFisico.ToString() + ")";
                 lblAvgEmotional.Content = avgs.biorritmoEmocional.ToString();
-                lblAvgEmotionalTotal.Content = avgs.totalBiorritmoEmocional.ToString();
+                lblAvgEmotionalTotal.Content = "(" + avgs.totalBiorritmoEmocional.ToString() + ")";
                 lblAvgIntelectual.Content = avgs.biorritmoIntelectual.ToString();
-                lblAvgIntelectualTotal.Content = avgs.totalBiorritmoIntelectual.ToString();
+                lblAvgIntelectualTotal.Content = "(" + avgs.totalBiorritmoIntelectual.ToString() + ")";
                 lblAvgIntuitional.Content = avgs.biorritmoIntuicional.ToString();
-                lblAvgIntuitionalTotal.Content = avgs.totalBiorritmoIntuicional.ToString();
+                lblAvgIntuitionalTotal.Content = "(" + avgs.totalBiorritmoIntuicional.ToString() + ")";
             }
             catch (Exception)
             {

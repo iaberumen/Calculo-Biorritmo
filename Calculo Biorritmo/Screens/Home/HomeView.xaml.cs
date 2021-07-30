@@ -41,6 +41,7 @@ namespace Calculo_Biorritmo.Screens.Home
             var accidentes = new List<accident>();
             var employees = new List<employee>();
             var modas = AccidentAlgorytm.startAlgorytm();
+            List<AccidentsVM> posibleAccidents = null;
 
             using (var ctx = new EmployeeEntity())
                 employees = ctx.employees.ToList();
@@ -62,11 +63,15 @@ namespace Calculo_Biorritmo.Screens.Home
 
                 i++;
             }
-
-            var posibleAccidents = accidents.Where(x => x.residuo_fisico == modas.biorritmoFisico
-                                                    && x.residuo_emocional == modas.biorritmoEmocional
-                                                    && x.residuo_intelectual == modas.biorritmoIntelectual
-                                                    && x.residuo_intuicional == modas.biorritmoIntuicional).ToList();
+            if(modas != null)
+            {
+                posibleAccidents = accidents.Where(x => x.residuo_fisico == modas.biorritmoFisico
+                                                && x.residuo_emocional == modas.biorritmoEmocional
+                                                && x.residuo_intelectual == modas.biorritmoIntelectual
+                                                && x.residuo_intuicional == modas.biorritmoIntuicional).ToList();
+            }
+            
+            
 
             using (var ctx = new EmployeeEntity())
                 totalRegisters = ctx.employees.totalRegisters();

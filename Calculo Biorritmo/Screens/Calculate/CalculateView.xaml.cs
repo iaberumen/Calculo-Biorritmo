@@ -4,6 +4,7 @@ using Calculo_Biorritmo.ApplicationLayer.Queries.Employees.Data;
 using Calculo_Biorritmo.Data;
 using Calculo_Biorritmo.Extensions.ContextExtensions;
 using Calculo_Biorritmo.Screens.Calculate.BiorytmResults;
+using Calculo_Biorritmo.Utils.Data;
 using Calculo_Biorritmo.ViewModel;
 using MediatR;
 using OxyPlot;
@@ -96,7 +97,8 @@ namespace Calculo_Biorritmo.Screens.Calculate
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            _userControl(new EmployeeBiorytm(tbDiasVividos.Text));
+            var livingDaysFirstMoth = DataCalc.daysLived(_fechaNacimiento, DataCalc.getFirstDayMonth());
+            _userControl(new EmployeeBiorytm(tbDiasVividos.Text, livingDaysFirstMoth));
 
             //dias = int.Parse(tbDiasVividos.Text);
             //var biorritmoFisico = CalcularBiorritmo(dias,23);

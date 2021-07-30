@@ -51,9 +51,9 @@ namespace Calculo_Biorritmo.Screens.Accidents
 
                 empleado.ItemsSource = response.data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Ha ocurrido un error");
+                MessageBox.Show("Ha ocurrido un error" +ex.Message);
             }
         }
 
